@@ -6,13 +6,19 @@
     <title>英語 900 句 數位學習系統</title>
     <style>
         body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f4f9; }
-        .menu { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
-        .menu button { padding: 8px 12px; cursor: pointer; border: none; border-radius: 4px; background-color: #007bff; color: white; transition: opacity 0.2s; }
-        .menu button:active { opacity: 0.7; }
+		
+				/* 修改目錄列：手機版 1 排 3 冊 */
+		.menu { 
+			display: grid; 
+			grid-template-columns: repeat(3, 1fr); /* 關鍵：一排三個 */
+			gap: 8px; 
+			margin-bottom: 20px; 
+		}
+		.menu button { padding: 12px 8px; cursor: pointer; border: none; border-radius: 4px; background-color: #007bff; color: white; font-size: 0.9em; }	
         
         /* 修改控制列為彈性佈局，適配手機 */
         .controls { 
-            position: sticky; 
+			position: sticky; 
             top: 0; 
             background: #fff; 
             padding: 12px; 
@@ -27,7 +33,7 @@
             flex-wrap: wrap;
         }
 
-        .rate-container { display: flex; align-items: center; gap: 8px; font-size: 0.9em; }
+        .rate-container { display: flex; align-items: center; gap: 8px; font-size: 0.9em; margin-bottom: 10px;}
 
         .action-buttons {
            margin-left: auto;
@@ -56,7 +62,8 @@
         /* 手機版樣式微調 */
         @media (max-width: 600px) {
             body { padding: 10px; }
-            .controls { flex-direction: column; align-items: stretch; gap: 12px; }
+			.menu { grid-template-columns: repeat(6, 1fr); }
+			.controls { flex-direction: row; }
             .action-buttons { margin-left: 0; width: 100%; justify-content: space-between; }
             .toggle-btn { flex: 1; min-width: 0; font-size: 0.85em; padding: 10px 5px; }
             .rate-container { width: 100%; justify-content: space-between; }
@@ -75,14 +82,15 @@
         <button onclick="showPage(5)">第 5 冊</button>
         <button onclick="showPage(6)">第 6 冊</button>
     </div>
+	
+	<div class="rate-container">
+		<span>語速：</span>
+		<input type="range" id="rate" value="0.8" step="0.1" min="0.5" max="1.5" 
+			   oninput="document.getElementById('rateDisplay').innerText = this.value">
+		<span id="rateDisplay" style="min-width: 25px;">0.8</span>
+	</div>
 
     <div class="controls">
-        <div class="rate-container">
-            <span>語速：</span>
-            <input type="range" id="rate" value="0.8" step="0.1" min="0.5" max="1.5" 
-                   oninput="document.getElementById('rateDisplay').innerText = this.value">
-            <span id="rateDisplay" style="min-width: 25px;">0.8</span>
-        </div>
         <div class="action-buttons">
             <button id="btnEng" class="toggle-btn btn-on" onclick="toggle('english', 'btnEng')">英文：顯示</button>
             <button id="btnChi" class="toggle-btn btn-on" onclick="toggle('chinese', 'btnChi')">中文：顯示</button>
@@ -3219,72 +3227,78 @@
 
         </div>
 
-    <script>
-        // 語音引擎初始化與優化
-        let voices = [];
-        function loadVoices() {
-            voices = window.speechSynthesis.getVoices();
-        }
-        window.speechSynthesis.onvoiceschanged = loadVoices;
-        loadVoices();
+	<script>
+		let voices = [];
 
-        function getBestVoice() {
-            if (voices.length === 0) loadVoices();
-            // 優先順序：Google US English > 系統高級語音 > 一般 en-US > 任何英語
-            return voices.find(v => v.lang === 'en-US' && v.name.includes('Google')) ||
-                   voices.find(v => v.lang === 'en-US' && v.name.includes('Premium')) ||
-                   voices.find(v => v.lang === 'en-US') ||
-                   voices.find(v => v.lang.startsWith('en'));
-        }
+		// 初始化語音清單，並針對手機端進行優化
+		function loadVoices() {
+			voices = window.speechSynthesis.getVoices();
+		}
 
-        function showPage(num) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            const target = document.getElementById('page' + num);
-            if (target) {
-                target.classList.add('active');
-                window.scrollTo(0,0);
-            } else {
-                alert('第 ' + num + ' 冊內容尚未載入');
-            }
-        }
+		// 當語音清單變更時重新載入 (手機端常見)
+		if (speechSynthesis.onvoiceschanged !== undefined) {
+			speechSynthesis.onvoiceschanged = loadVoices;
+		}
 
-        function speak(element) {
-            const text = element.querySelector('.english').innerText;
-            const msg = new SpeechSynthesisUtterance(text);
-            
-            // 指定高品質語音以解決手機端不自然的問題
-            const selectedVoice = getBestVoice();
-            if (selectedVoice) msg.voice = selectedVoice;
-            
-            msg.lang = 'en-US';
-            msg.rate = parseFloat(document.getElementById('rate').value) || 0.8;
-            
-            window.speechSynthesis.cancel();
-            window.speechSynthesis.speak(msg);
-        }
+		function getBestVoice() {
+			if (voices.length === 0) voices = window.speechSynthesis.getVoices();
+			
+			// 優先順序：1.Google 高品質音 2.iOS 高級音(Enhanced) 3.Siri/Premium 音 4.標準美式 5.任何英文
+			return voices.find(v => v.lang === 'en-US' && v.name.includes('Google')) ||
+				   voices.find(v => v.lang === 'en-US' && v.name.includes('Enhanced')) ||
+				   voices.find(v => v.lang === 'en-US' && v.name.includes('Premium')) ||
+				   voices.find(v => v.name.includes('Siri') && v.lang.startsWith('en')) ||
+				   voices.find(v => v.lang === 'en-US') ||
+				   voices.find(v => v.lang.startsWith('en'));
+		}
 
-        function toggle(className, btnId) {
-            const elements = document.querySelectorAll('.' + className);
-            const btn = document.getElementById(btnId);
-            const isHidden = elements.length > 0 && elements[0].classList.contains('hidden');
-            const typeName = className === 'english' ? '英文' : '中文';
+		function speak(element) {
+			const text = element.querySelector('.english').innerText;
+			const msg = new SpeechSynthesisUtterance(text);
+			
+			// 關鍵修改：手動指定系統中最高品質的語音
+			const selectedVoice = getBestVoice();
+			if (selectedVoice) {
+				msg.voice = selectedVoice;
+			}
 
-            elements.forEach(el => {
-                if (isHidden) el.classList.remove('hidden');
-                else el.classList.add('hidden');
-            });
+			msg.lang = 'en-US';
+			// 語速從拉桿獲取，預設 0.8
+			msg.rate = parseFloat(document.getElementById('rate').value) || 0.8;
+			msg.pitch = 1.0; // 確保音調自然
 
-            if (isHidden) {
-                btn.className = 'toggle-btn btn-on';
-                btn.innerText = typeName + '：顯示';
-            } else {
-                btn.className = 'toggle-btn btn-off';
-                btn.innerText = typeName + '：隱藏';
-            }
-        }
+			window.speechSynthesis.cancel(); // 停止先前的朗讀
+			window.speechSynthesis.speak(msg);
+		}
 
-        // 初始化顯示第一頁
-        showPage(1);
-    </script>
+		// 保留原本的所有功能函式
+		function showPage(num) {
+			document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+			const target = document.getElementById('page' + num);
+			if (target) {
+				target.classList.add('active');
+				window.scrollTo(0,0);
+			}
+		}
+
+		function toggle(className, btnId) {
+			const elements = document.querySelectorAll('.' + className);
+			const btn = document.getElementById(btnId);
+			const isHidden = elements.length > 0 && elements[0].classList.contains('hidden');
+			const label = className === 'english' ? '英文' : '中文';
+
+			elements.forEach(el => {
+				if (isHidden) el.classList.remove('hidden');
+				else el.classList.add('hidden');
+			});
+
+			btn.className = isHidden ? 'toggle-btn btn-on' : 'toggle-btn btn-off';
+			btn.innerText = label + (isHidden ? '：顯示' : '：隱藏');
+		}
+
+		// 初始載入語音
+		loadVoices();
+		showPage(1);
+	</script>
 </body>
 </html>
