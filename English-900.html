@@ -1,0 +1,3232 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>英語 900 句 數位學習系統</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f4f9; }
+        .menu { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
+        .menu button { padding: 8px 12px; cursor: pointer; border: none; border-radius: 4px; background-color: #007bff; color: white; }
+        
+        .controls { position: sticky; top: 0; background: #fff; padding: 10px; border-bottom: 1px solid #ccc; margin-bottom: 15px; display: flex; align-items: center; gap: 15px; z-index: 100; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+
+            .action-buttons {
+           margin-left: auto;      /* ⭐⭐⭐ 關鍵一行 */
+           display: flex;
+           gap: 10px;
+         }
+
+        .toggle-btn { padding: 6px 12px; border: none; border-radius: 4px; color: white; cursor: pointer; font-weight: bold; min-width: 100px; }
+        
+        /* 顯示時深灰，隱藏時淺灰 */
+        .btn-on { background-color: #555555; }
+        .btn-off { background-color: #cccccc; }
+
+        .page { display: none; background: white; padding: 15px 25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .page.active { display: block; }
+        
+        .chapter-title { color: #333; border-left: 4px solid #007bff; padding-left: 10px; margin: 20px 0 10px 0; font-size: 1.1em; font-weight: bold; }
+        
+        /* 緊湊排版 */
+        .sentence-box { margin-bottom: 8px; padding: 4px 0; border-bottom: 1px solid #f0f0f0; cursor: pointer; transition: background 0.2s; }
+        .sentence-box:hover { background-color: #fafafa; }
+        .eng-row { display: flex; align-items: flex-start; }
+        .num { font-weight: bold; color: #007bff; min-width: 30px; flex-shrink: 0; }
+        .english { font-size: 1.1em; font-weight: 500; color: #000; }
+        .chinese { font-size: 0.95em; color: #666; display: block; margin-top: 1px; padding-left: 30px; }
+        
+        .hidden { visibility: hidden; height: 0; margin: 0; overflow: hidden; }
+    </style>
+</head>
+<body>
+    
+    <div class="menu">
+        <button onclick="showPage(1)">第 1 冊</button>
+        <button onclick="showPage(2)">第 2 冊</button>
+        <button onclick="showPage(3)">第 3 冊</button>
+        <button onclick="showPage(4)">第 4 冊</button>
+        <button onclick="showPage(5)">第 5 冊</button>
+        <button onclick="showPage(6)">第 6 冊</button>
+    </div>
+
+    <div class="controls">
+             <span style="font-size: 0.9em;">語速：<input type="number" id="rate" value="0.8" step="0.1" min="0.1" max="2" style="width: 45px;"></span>
+             <div class="action-buttons">
+             <button id="btnEng" class="toggle-btn btn-on" onclick="toggle('english', 'btnEng')">隱藏/顯示 英文</button>
+             <button id="btnChi" class="toggle-btn btn-on" onclick="toggle('chinese', 'btnChi')">隱藏/顯示 中文</button>
+             </div>
+    </div>
+
+<div id="page1" class="page">
+<h2>第壹冊</h2>
+<div class="chapter-title">壹一、 Greetings 問候語</div>
+
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">1.</span><span class="english">Hello! / Hi!</span></div>
+    <span class="chinese">你好！</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">2.</span><span class="english">Good morning / afternoon / evening!</span></div>
+    <span class="chinese">早晨（下午/晚上）好！</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">3.</span><span class="english">I'm Kathy King.</span></div>
+    <span class="chinese">我是凱西‧金。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">4.</span><span class="english">Are you Peter Smith?</span></div>
+    <span class="chinese">你是彼得‧史密斯嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">5.</span><span class="english">Yes, I am. / No, I'm not.</span></div>
+    <span class="chinese">是，我是。/ 不，我不是。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">6.</span><span class="english">How are you?</span></div>
+    <span class="chinese">你好嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">7.</span><span class="english">Fine, thanks. And you?</span></div>
+    <span class="chinese">很好，謝謝，你呢？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">8.</span><span class="english">I'm fine, too.</span></div>
+    <span class="chinese">我也很好。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">9.</span><span class="english">How is Amy / your wife / your husband?</span></div>
+    <span class="chinese">愛米好嗎？/你妻子好嗎？/你丈夫好嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">10.</span><span class="english">She is very well, thank you.</span></div>
+    <span class="chinese">她很好，謝謝。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">11.</span><span class="english">Good night, Jane.</span></div>
+    <span class="chinese">晚安，簡。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">12.</span><span class="english">Good-bye, Mike.</span></div>
+    <span class="chinese">再見，邁克。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">13.</span><span class="english">See you tomorrow.</span></div>
+    <span class="chinese">明天見。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">14.</span><span class="english">See you later.</span></div>
+    <span class="chinese">待會兒見。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">15.</span><span class="english">I have to go now.</span></div>
+    <span class="chinese">我必須走了。</span>
+</div>
+
+<div class="chapter-title">壹二、Expression In Class 課堂用語</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">16.</span><span class="english">May I come in?</span></div>
+    <span class="chinese">我能進來嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">17.</span><span class="english">Come in, please.</span></div>
+    <span class="chinese">請進。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">18.</span><span class="english">Sit down, please.</span></div>
+    <span class="chinese">請坐。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">19.</span><span class="english">It's time for class.</span></div>
+    <span class="chinese">上課時間到了。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">20.</span><span class="english">Open your books and turn to page 20.</span></div>
+    <span class="chinese">打開書，翻到第20頁。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">21.</span><span class="english">I'll call the roll before class.</span></div>
+    <span class="chinese">課前我要點名。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">22.</span><span class="english">Here!</span></div>
+    <span class="chinese">到！</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">23.</span><span class="english">Has everybody got a sheet?</span></div>
+    <span class="chinese">每個人都拿到材料了嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">24.</span><span class="english">Any different opinion?</span></div>
+    <span class="chinese">有不同意見嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">25.</span><span class="english">Are you with me?</span></div>
+    <span class="chinese">你們跟上我講的了嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">26.</span><span class="english">Have I made myself clear?</span></div>
+    <span class="chinese">我講明白了嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">27.</span><span class="english">Could you say it again?</span></div>
+    <span class="chinese">你能再說一遍嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">28.</span><span class="english">Any questions?</span></div>
+    <span class="chinese">有什麼問題嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">29.</span><span class="english">That's all for today.</span></div>
+    <span class="chinese">今天就講到這裡。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">30.</span><span class="english">Please turn in your paper before leaving.</span></div>
+    <span class="chinese">請在離開前將論文交上。</span>
+</div>
+
+<div class="chapter-title">壹三、Identifying Objects 辨別物品</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">31.</span><span class="english">What's this?</span></div>
+    <span class="chinese">這是什麼？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">32.</span><span class="english">It's a pen.</span></div>
+    <span class="chinese">是支筆。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">33.</span><span class="english">Is this your handbag?</span></div>
+    <span class="chinese">這是你的手提包嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">34.</span><span class="english">No, it isn't. / Yes, it is.</span></div>
+    <span class="chinese">不，它不是。/是的，它是。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">35.</span><span class="english">Whose pen is this?</span></div>
+    <span class="chinese">這是誰的筆？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">36.</span><span class="english">It's Kate's.</span></div>
+    <span class="chinese">是凱特的。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">37.</span><span class="english">Is that a car?</span></div>
+    <span class="chinese">那是一輛小汽車嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">38.</span><span class="english">No, it isn't. It's a bus.</span></div>
+    <span class="chinese">不，那是一輛公共汽車。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">39.</span><span class="english">What do you call this in English?</span></div>
+    <span class="chinese">這個用英語怎麼說？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">40.</span><span class="english">What is the color of your new book?</span></div>
+    <span class="chinese">你的新書是什麼顏色的？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">41.</span><span class="english">How big is your house?</span></div>
+    <span class="chinese">你的房子有多大？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">42.</span><span class="english">How long is the street?</span></div>
+    <span class="chinese">這條街有多長？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">43.</span><span class="english">What's the name of the cat?</span></div>
+    <span class="chinese">這貓叫什麼名字？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">44.</span><span class="english">Where's the company?</span></div>
+    <span class="chinese">那個公司在哪兒？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">45.</span><span class="english">Which is the right size?</span></div>
+    <span class="chinese">哪個尺碼是對的？</span>
+</div>
+
+<div class="chapter-title">壹四、About Belongings 關於所有物</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">46.</span><span class="english">What's this?</span></div>
+    <span class="chinese">這是什麼？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">47.</span><span class="english">It's an air-conditioner.</span></div>
+    <span class="chinese">這是空調。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">48.</span><span class="english">Is this yours?</span></div>
+    <span class="chinese">這是你的嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">49.</span><span class="english">Yes, it's mine.</span></div>
+    <span class="chinese">是的，是我的。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">50.</span><span class="english">Where are my glasses?</span></div>
+    <span class="chinese">我的眼鏡在哪兒？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">51.</span><span class="english">Do you know where I've put my glasses?</span></div>
+    <span class="chinese">你知道我把眼鏡擱哪兒了嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">52.</span><span class="english">Over there.</span></div>
+    <span class="chinese">在那邊。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">53.</span><span class="english">On the desk.</span></div>
+    <span class="chinese">在桌上。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">54.</span><span class="english">Is this your pen? I found it under the desk.</span></div>
+    <span class="chinese">這是你的筆嗎？我在桌下撿的。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">55.</span><span class="english">No. Mine is blue.</span></div>
+    <span class="chinese">不是。我的是藍的。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">56.</span><span class="english">Which is your bag?</span></div>
+    <span class="chinese">哪個是你的包？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">57.</span><span class="english">The bigger one.</span></div>
+    <span class="chinese">大些的那個。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">58.</span><span class="english">The one on your right.</span></div>
+    <span class="chinese">你右邊的那個。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">59.</span><span class="english">Are these books all yours?</span></div>
+    <span class="chinese">這些書全是你的嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">60.</span><span class="english">Some of them are mine.</span></div>
+    <span class="chinese">一部分是我的。</span>
+</div>
+
+<div class="chapter-title">壹五、Identifying People 辨別身份</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">61.</span><span class="english">Who are you?</span></div>
+    <span class="chinese">你是誰？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">62.</span><span class="english">I'm Jim.</span></div>
+    <span class="chinese">我是吉姆。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">63.</span><span class="english">Who is the guy over there?</span></div>
+    <span class="chinese">那邊那個人是誰？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">64.</span><span class="english">He's Bob.</span></div>
+    <span class="chinese">他是鮑勃。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">65.</span><span class="english">Is that girl a student?</span></div>
+    <span class="chinese">那個女孩是學生嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">66.</span><span class="english">No, she isn't.</span></div>
+    <span class="chinese">不，她不是。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">67.</span><span class="english">What do you do?</span></div>
+    <span class="chinese">你是做什麼的？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">68.</span><span class="english">I'm a farmer.</span></div>
+    <span class="chinese">我是個農民。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">69.</span><span class="english">What does he do?</span></div>
+    <span class="chinese">他是幹什麼的？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">70.</span><span class="english">He's a manager.</span></div>
+    <span class="chinese">他是個經理。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">71.</span><span class="english">She must be a model, isn't?</span></div>
+    <span class="chinese">她一定是個模特，不是嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">72.</span><span class="english">I really don't known.</span></div>
+    <span class="chinese">我真不知道。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">73.</span><span class="english">I have no idea about it.</span></div>
+    <span class="chinese">我一點都不知道。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">74.</span><span class="english">Can she be a driver?</span></div>
+    <span class="chinese">她可能是個司機嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">75.</span><span class="english">Yes, I think so.</span></div>
+    <span class="chinese">是的，我認為是。</span>
+</div>
+
+<div class="chapter-title">壹六、 About Introduction 關於介紹</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">76.</span><span class="english">What's your name?</span></div>
+    <span class="chinese">你叫什麼名字？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">77.</span><span class="english">May I have your name?</span></div>
+    <span class="chinese">能告訴我你的名字嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">78.</span><span class="english">My name is Thomas.</span></div>
+    <span class="chinese">我叫湯姆斯。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">79.</span><span class="english">Just call me Tom.</span></div>
+    <span class="chinese">就叫我湯姆吧。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">80.</span><span class="english">What's your family name?</span></div>
+    <span class="chinese">你姓什麼？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">81.</span><span class="english">My family name is Ayneswonth.</span></div>
+    <span class="chinese">我姓安尼思華斯。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">82.</span><span class="english">How do you spell it?</span></div>
+    <span class="chinese">怎麼拼？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">83.</span><span class="english">Who is the lady in white?</span></div>
+    <span class="chinese">穿白衣服的那位小姐是誰？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">84.</span><span class="english">Could you introduce me to her?</span></div>
+    <span class="chinese">你能把我介紹給她嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">85.</span><span class="english">Rose, let me introduce my friend to you.</span></div>
+    <span class="chinese">羅斯，讓我介紹一下我的朋友。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">86.</span><span class="english">This is Tom. He's my classmate.</span></div>
+    <span class="chinese">這是湯姆。我的同學。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">87.</span><span class="english">Nice to meet you.</span></div>
+    <span class="chinese">很高興認識你。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">88.</span><span class="english">Nice to meet you, too.</span></div>
+    <span class="chinese">認識你我也很高興。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">89.</span><span class="english">Let me introduce myself.</span></div>
+    <span class="chinese">讓我自我介紹一下。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">90.</span><span class="english">How do you do?</span></div>
+    <span class="chinese">你好！</span>
+</div>
+
+<div class="chapter-title">壹七、Year, Month And Day 年、月、日</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">91.</span><span class="english">What day is it today?</span></div>
+    <span class="chinese">今天星期幾？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">92.</span><span class="english">It's Monday today.</span></div>
+    <span class="chinese">今天是星期一。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">93.</span><span class="english">What's the date today?</span></div>
+    <span class="chinese">今天是幾號？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">94.</span><span class="english">It's January the 15th, 1999.</span></div>
+    <span class="chinese">今天是1999年1月15日。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">95.</span><span class="english">What month is this?</span></div>
+    <span class="chinese">現在是幾月？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">96.</span><span class="english">It's December.</span></div>
+    <span class="chinese">現在是十二月。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">97.</span><span class="english">What year is this?</span></div>
+    <span class="chinese">今年是哪一年？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">98.</span><span class="english">It's the year of 1999.</span></div>
+    <span class="chinese">今年是1999年。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">99.</span><span class="english">What will you do during this weekend?</span></div>
+    <span class="chinese">這週末你幹什麼？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">100.</span><span class="english">Does the shop open at 9 am on weekdays?</span></div>
+    <span class="chinese">這家店平日是早上9點開門嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">101.</span><span class="english">It opens at 8 am on weekdays, but at 9 at weekends.</span></div>
+    <span class="chinese">平日上午8點開，但週末9點開。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">102.</span><span class="english">What will you do the day after on next?</span></div>
+    <span class="chinese">後天你幹什麼？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">103.</span><span class="english">What did you do the week before last?</span></div>
+    <span class="chinese">上上星期你幹了什麼？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">104.</span><span class="english">I'll work for the next 5 days.</span></div>
+    <span class="chinese">我要工作5天（從明天算起）</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">105.</span><span class="english">It's been 5 years since I last saw you.</span></div>
+    <span class="chinese">我已5年沒見你了。</span>
+</div>
+
+<div class="chapter-title">壹八、Talking About Objects 談論事物</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">106.</span><span class="english">Do you have a computer?</span></div>
+    <span class="chinese">你有計算機嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">107.</span><span class="english">Yes, I do.</span></div>
+    <span class="chinese">是的，我有。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">108.</span><span class="english">He has that book, doesn't he?</span></div>
+    <span class="chinese">他有那本書，是嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">109.</span><span class="english">No, he doesn't.</span></div>
+    <span class="chinese">不，他沒有。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">110.</span><span class="english">Do you have any brothers or sisters?</span></div>
+    <span class="chinese">你有兄弟或姐妹嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">111.</span><span class="english">No, I'm a single son.</span></div>
+    <span class="chinese">沒有，我是獨生子。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">112.</span><span class="english">Does your computer have a modem?</span></div>
+    <span class="chinese">你的電腦有調製解調器嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">113.</span><span class="english">Do you have shampoo here?</span></div>
+    <span class="chinese">這兒有香波賣嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">114.</span><span class="english">What a beautiful garden you have!</span></div>
+    <span class="chinese">你的花園真漂亮。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">115.</span><span class="english">Any tickets left?</span></div>
+    <span class="chinese">有剩票嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">116.</span><span class="english">Do you have glue? I need some here.</span></div>
+    <span class="chinese">你有膠水嗎？我這裡需要一點。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">117.</span><span class="english">I have some left.</span></div>
+    <span class="chinese">我剩下一些。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">118.</span><span class="english">If you have more, please give me some.</span></div>
+    <span class="chinese">如果你有多的，請給我。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">119.</span><span class="english">Do you have my pencil?</span></div>
+    <span class="chinese">你拿了我的鉛筆嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">120.</span><span class="english">Yes, I have your eraser, too.</span></div>
+    <span class="chinese">是的，我還拿了你的橡皮。</span>
+</div>
+
+<div class="chapter-title">壹九、Talking About Time 敘述時間</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">121.</span><span class="english">What time is it now?</span></div>
+    <span class="chinese">現在幾點？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">122.</span><span class="english">It's two o'clock.</span></div>
+    <span class="chinese">現在兩點。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">123.</span><span class="english">It's a quarter past five.</span></div>
+    <span class="chinese">現在是五點一刻。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">124.</span><span class="english">It's ten minutes to four.</span></div>
+    <span class="chinese">現在差十分四點。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">125.</span><span class="english">It's half past nine.</span></div>
+    <span class="chinese">現在是九點半。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">126.</span><span class="english">It's one o'clock sharp.</span></div>
+    <span class="chinese">現在一點整。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">127.</span><span class="english">It's not four o'clock.</span></div>
+    <span class="chinese">還沒到四點呢。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">128.</span><span class="english">My watch says two o'clock.</span></div>
+    <span class="chinese">我的表是兩點鐘。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">129.</span><span class="english">My watch is two minutes fast.</span></div>
+    <span class="chinese">我的表快了兩分鐘。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">130.</span><span class="english">What's the time by your watch?</span></div>
+    <span class="chinese">你的表幾點了？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">131.</span><span class="english">We must arrive there on time.</span></div>
+    <span class="chinese">我們必須準時到那兒。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">132.</span><span class="english">There are only two minutes left.</span></div>
+    <span class="chinese">只剩兩分鐘了。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">133.</span><span class="english">Can you finish your work ahead of time?</span></div>
+    <span class="chinese">你能提前完成工作嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">134.</span><span class="english">The flight is delayed.</span></div>
+    <span class="chinese">飛機晚點起飛。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">135.</span><span class="english">The meeting is put off.</span></div>
+    <span class="chinese">會議延期了。</span>
+</div>
+
+<div class="chapter-title">壹十、About Dates 關於日期</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">136.</span><span class="english">What day is today?</span></div>
+    <span class="chinese">今天星期幾？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">137.</span><span class="english">Today is Monday.</span></div>
+    <span class="chinese">今天星期一。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">138.</span><span class="english">What's the date today?</span></div>
+    <span class="chinese">今天幾號？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">139.</span><span class="english">Today is May 21st.</span></div>
+    <span class="chinese">今天是五月二十一號。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">140.</span><span class="english">When were you born?</span></div>
+    <span class="chinese">你什麼時候出生的？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">141.</span><span class="english">I was born on September 1st, 1976.</span></div>
+    <span class="chinese">我出生在1976年9月1日。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">142.</span><span class="english">What time?</span></div>
+    <span class="chinese">什麼時候？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">143.</span><span class="english">You name the time.</span></div>
+    <span class="chinese">你定時間吧。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">144.</span><span class="english">I'll meet you tomorrow.</span></div>
+    <span class="chinese">我們明天見面。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">145.</span><span class="english">Do you know the exact date?</span></div>
+    <span class="chinese">你知道確切日期嗎？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">146.</span><span class="english">Please check the date.</span></div>
+    <span class="chinese">請核實一下日期。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">147.</span><span class="english">What were you doing this time last year?</span></div>
+    <span class="chinese">去年這時候你在幹什麼？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">148.</span><span class="english">How long will the sale last?</span></div>
+    <span class="chinese">折價銷售多久？</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">149.</span><span class="english">Only three days.</span></div>
+    <span class="chinese">僅三天。</span>
+</div>
+<div class="sentence-box" onclick="speak(this)">
+    <div class="eng-row"><span class="num">150.</span><span class="english">I'll be back in 5 days.</span></div>
+    <span class="chinese">我五天之後回來。</span>
+</div>
+
+            </div>
+
+<div id="page2" class="page">
+<h2>第貳冊</h2>
+<div class="chapter-title">貳一、About Visits 關於拜訪</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">151.</div>
+<div class="english">Hello. Can I see Mr. Green?</div>
+</div>
+<div class="chinese">你好，我能見格林先生嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">152.</div>
+<div class="english">Do you have an appointment?</div>
+</div>
+<div class="chinese">你有預約嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">153.</div>
+<div class="english">Sorry, I don't.</div>
+</div>
+<div class="chinese">對不起，我沒有。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">154.</div>
+<div class="english">Yes. At 3 pm.</div>
+</div>
+<div class="chinese">是的，約的是下午3點。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">155.</div>
+<div class="english">Sorry, Mr. Green can't see you now.</div>
+</div>
+<div class="chinese">對不起，格林先生現在不能見您。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">156.</div>
+<div class="english">He's on the phone.</div>
+</div>
+<div class="chinese">他在打電話。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">157.</div>
+<div class="english">Would you wait here for a minute?</div>
+</div>
+<div class="chinese">您能在這裡等一下嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">158.</div>
+<div class="english">Would you like something to drink?</div>
+</div>
+<div class="chinese">您想喝點什麼嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">159.</div>
+<div class="english">Tea, please.</div>
+</div>
+<div class="chinese">我喝點茶吧。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">160.</div>
+<div class="english">Mr. Green, Mr. Smith is here.</div>
+</div>
+<div class="chinese">格林先生，史密斯先生在這裡。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">161.</div>
+<div class="english">You may go in now.</div>
+</div>
+<div class="chinese">您可以進去了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">162.</div>
+<div class="english">Nice to see you, my old friend.</div>
+</div>
+<div class="chinese">真高興見到你，我的老朋友。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">163.</div>
+<div class="english">How have you been these years?</div>
+</div>
+<div class="chinese">這些年你怎麼樣？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">164.</div>
+<div class="english">You've changed little.</div>
+</div>
+<div class="chinese">你一點也沒變。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">165.</div>
+<div class="english">Do you still remember that Christmas?</div>
+</div>
+<div class="chinese">你仍記得那個聖誕節嗎？</div>
+</div>
+
+<div class="chapter-title">貳二、About Language 關於語言</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">166.</div>
+<div class="english">Do you speak English?</div>
+</div>
+<div class="chinese">你會說英語嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">167.</div>
+<div class="english">Yes, a little.</div>
+</div>
+<div class="chinese">會講一點。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">168.</div>
+<div class="english">How long have you studied English?</div>
+</div>
+<div class="chinese">你學英語多久了？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">169.</div>
+<div class="english">He speaks English fluently.</div>
+</div>
+<div class="chinese">他講英語很流利。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">170.</div>
+<div class="english">Your English is very good.</div>
+</div>
+<div class="chinese">你的英語很好。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">171.</div>
+<div class="english">You speak English pretty well.</div>
+</div>
+<div class="chinese">你的英語講的很好。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">172.</div>
+<div class="english">Are you a native speaker of English?</div>
+</div>
+<div class="chinese">你的母語是英語嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">173.</div>
+<div class="english">My native language is Chinese.</div>
+</div>
+<div class="chinese">我的母語是漢語。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">174.</div>
+<div class="english">He speaks with London accent.</div>
+</div>
+<div class="chinese">他帶點倫敦口音。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">175.</div>
+<div class="english">He has a strong accent.</div>
+</div>
+<div class="chinese">他口音很重。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">176.</div>
+<div class="english">I have some difficulty in expressing myself.</div>
+</div>
+<div class="chinese">我表達起來有點困難。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">177.</div>
+<div class="english">I'm always confused with "s" and "th".</div>
+</div>
+<div class="chinese">我常把s和th搞混。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">178.</div>
+<div class="english">Can you write in English?</div>
+</div>
+<div class="chinese">你能用英文寫文章嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">179.</div>
+<div class="english">Your pronunciation is excellent.</div>
+</div>
+<div class="chinese">你的發音很好。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">180.</div>
+<div class="english">How can I improve my spoken English?</div>
+</div>
+<div class="chinese">我該怎樣才能提高口語水平？</div>
+</div>
+
+<div class="chapter-title">貳三、Talking About Activities 談論活動</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">181.</div>
+<div class="english">What are you doing?</div>
+</div>
+<div class="chinese">你在幹什麼？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">182.</div>
+<div class="english">I'm reading a book.</div>
+</div>
+<div class="chinese">我在看書。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">183.</div>
+<div class="english">I'm cooking.</div>
+</div>
+<div class="chinese">我在做飯。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">184.</div>
+<div class="english">Are you watching TV now?</div>
+</div>
+<div class="chinese">你在看電視嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">185.</div>
+<div class="english">Yes, I'm watching Channel 5.</div>
+</div>
+<div class="chinese">是的，我在看5頻道。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">186.</div>
+<div class="english">No, I'm listening to the radio.</div>
+</div>
+<div class="chinese">沒有，我在聽收音機。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">187.</div>
+<div class="english">Where are you going?</div>
+</div>
+<div class="chinese">你去哪兒？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">188.</div>
+<div class="english">I'm going to work.</div>
+</div>
+<div class="chinese">我去上班。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">189.</div>
+<div class="english">Who are you writing to?</div>
+</div>
+<div class="chinese">你在給誰寫信？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">190.</div>
+<div class="english">I'm writing to an old friend.</div>
+</div>
+<div class="chinese">給一個老朋友。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">191.</div>
+<div class="english">What will you do this weekend?</div>
+</div>
+<div class="chinese">這週末你將幹什麼？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">192.</div>
+<div class="english">I'll go to a concert.</div>
+</div>
+<div class="chinese">我要去聽音樂會。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">193.</div>
+<div class="english">I'll go on an outing with some friends.</div>
+</div>
+<div class="chinese">我與朋友去郊遊。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">194.</div>
+<div class="english">Do you like traveling?</div>
+</div>
+<div class="chinese">你喜歡郊遊嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">195.</div>
+<div class="english">Yes, I like it a great deal/it very much.</div>
+</div>
+<div class="chinese">是的，我很喜歡。</div>
+</div>
+
+<div class="chapter-title">貳四、About Age 關於年齡</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">196.</div>
+<div class="english">How old are you?</div>
+</div>
+<div class="chinese">你多大了？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">197.</div>
+<div class="english">I'm twenty-two (years old).</div>
+</div>
+<div class="chinese">我二十二了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">198.</div>
+<div class="english">Mr. Smith is still in his forties.</div>
+</div>
+<div class="chinese">史密斯先生才四十幾歲。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">199.</div>
+<div class="english">I'm two years younger than my sister.</div>
+</div>
+<div class="chinese">我比我姐小兩歲。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">200.</div>
+<div class="english">My elder sister is one year older than her husband.</div>
+</div>
+<div class="chinese">我姐比他丈夫大一歲。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">201.</div>
+<div class="english">He's the youngest in the family.</div>
+</div>
+<div class="chinese">他是一家中最小的。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">202.</div>
+<div class="english">He looks much younger than he is.</div>
+</div>
+<div class="chinese">他看起來比他實際上年輕得多。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">203.</div>
+<div class="english">I came here when I was 20.</div>
+</div>
+<div class="chinese">我二十歲來這兒。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">204.</div>
+<div class="english">I started school at the age of 6.</div>
+</div>
+<div class="chinese">我六歲開始上學。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">205.</div>
+<div class="english">My father is over 60 years old.</div>
+</div>
+<div class="chinese">我父親已年過六十了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">206.</div>
+<div class="english">Most of them are less than 30.</div>
+</div>
+<div class="chinese">他們中大多數不到30歲。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">207.</div>
+<div class="english">I guess he's about 30.</div>
+</div>
+<div class="chinese">我猜他大概30歲。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">208.</div>
+<div class="english">She's going to be 15 next month.</div>
+</div>
+<div class="chinese">下個月她就滿15了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">209.</div>
+<div class="english">They'll have a party for their 10th wedding anniversary.</div>
+</div>
+<div class="chinese">他們將為結婚十週年開個晚會。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">210.</div>
+<div class="english">He's still a boy after all.</div>
+</div>
+<div class="chinese">他畢竟還只是個孩子。</div>
+</div>
+
+<div class="chapter-title">貳五、Talking About Daily Activities 談論日常生活</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">211.</div>
+<div class="english">When do you get up everyday?</div>
+</div>
+<div class="chinese">每天你幾點起床？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">212.</div>
+<div class="english">I usually get up at 8 o'clock.</div>
+</div>
+<div class="chinese">我通常8點起床。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">213.</div>
+<div class="english">Where do you have your lunch?</div>
+</div>
+<div class="chinese">你在哪兒吃午飯？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">214.</div>
+<div class="english">I have my lunch in a snack bar nearby.</div>
+</div>
+<div class="chinese">我在附近一家快餐店吃午飯。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">215.</div>
+<div class="english">What did you have for lunch?</div>
+</div>
+<div class="chinese">你中午吃些什麼？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">216.</div>
+<div class="english">I had a hamburger and a fried chicken leg?</div>
+</div>
+<div class="chinese">我吃一個漢堡包，一個炸雞腿。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">217.</div>
+<div class="english">What time do you start work?</div>
+</div>
+<div class="chinese">你什麼時候開始工作？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">218.</div>
+<div class="english">I start work at 8 o'clock.</div>
+</div>
+<div class="chinese">我八點開始工作。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">219.</div>
+<div class="english">What do you do at work?</div>
+</div>
+<div class="chinese">你上班幹些什麼？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">220.</div>
+<div class="english">I answer telephones and do some typing.</div>
+</div>
+<div class="chinese">我接電話和打字。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">221.</div>
+<div class="english">What time do you finish your work?</div>
+</div>
+<div class="chinese">你什麼時候下班？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">222.</div>
+<div class="english">At 6 o'clock sharp.</div>
+</div>
+<div class="chinese">6點。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">223.</div>
+<div class="english">What do you do in your spare time?</div>
+</div>
+<div class="chinese">閒暇時，你幹些什麼？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">224.</div>
+<div class="english">I like listening to pop music.</div>
+</div>
+<div class="chinese">我喜歡聽流行音樂。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">225.</div>
+<div class="english">I like playing football.</div>
+</div>
+<div class="chinese">我喜歡踢足球。</div>
+</div>
+
+<div class="chapter-title">貳六、Talking About Yesterday 談論昨天的事</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">226.</div>
+<div class="english">When did you get up yesterday morning?</div>
+</div>
+<div class="chinese">你昨天早上幾點起床？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">227.</div>
+<div class="english">At about seven.</div>
+</div>
+<div class="chinese">七點左右。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">228.</div>
+<div class="english">I heard the clock, but I didn't get up until 9.</div>
+</div>
+<div class="chinese">我聽見鬧鐘了，但我捱到九點才起。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">229.</div>
+<div class="english">I woke up seven and got up right away.</div>
+</div>
+<div class="chinese">我七點醒了，然後馬上起床了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">230.</div>
+<div class="english">I hurried to my office.</div>
+</div>
+<div class="chinese">我匆忙趕到辦公室。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">231.</div>
+<div class="english">I had my breakfast on the way.</div>
+</div>
+<div class="chinese">我在路上吃的早飯。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">232.</div>
+<div class="english">I was just on time.</div>
+</div>
+<div class="chinese">我剛好趕上。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">233.</div>
+<div class="english">I was 10 minutes late.</div>
+</div>
+<div class="chinese">我遲到了五分鐘。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">234.</div>
+<div class="english">I had lunch with a friend of mine.</div>
+</div>
+<div class="chinese">我和我的一個朋友一塊吃了午飯。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">235.</div>
+<div class="english">I finished my work at 6 p.m.</div>
+</div>
+<div class="chinese">下午6點我下班了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">236.</div>
+<div class="english">I stayed and did some extra work.</div>
+</div>
+<div class="chinese">我留下加了一會兒班。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">237.</div>
+<div class="english">The TV programs were really boring, so I went to bed very early.</div>
+</div>
+<div class="chinese">電視節目很無聊，所以我早早睡了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">238.</div>
+<div class="english">I read a magazine in bed.</div>
+</div>
+<div class="chinese">我躺在床上看雜誌。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">239.</div>
+<div class="english">I didn't sleep well.</div>
+</div>
+<div class="chinese">我沒睡好。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">240.</div>
+<div class="english">I slept soundly all night.</div>
+</div>
+<div class="chinese">我整夜睡的很熟。</div>
+</div>
+
+<div class="chapter-title">貳七、Talking With Friends 與朋友聊天</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">241.</div>
+<div class="english">Hi, Joe, is it really you?</div>
+</div>
+<div class="chinese">喬，你好，真是你嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">242.</div>
+<div class="english">Hi, Ann. Nice to see you again.</div>
+</div>
+<div class="chinese">安，你好。真高興再次見到你。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">243.</div>
+<div class="english">It's been a whole year since I last saw you.</div>
+</div>
+<div class="chinese">我整整一年沒見你了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">244.</div>
+<div class="english">Yes, but you look as pretty now, as you did then.</div>
+</div>
+<div class="chinese">但你看起來還是那麼漂亮。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">245.</div>
+<div class="english">Oh, thank you. How have you been these days?</div>
+</div>
+<div class="chinese">歐，謝謝。這段時間你好嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">246.</div>
+<div class="english">Not too bad.</div>
+</div>
+<div class="chinese">不太糟。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">247.</div>
+<div class="english">But you sound so sad.</div>
+</div>
+<div class="chinese">但聽起來你很悲傷。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">248.</div>
+<div class="english">Yes, I lost my pet cat yesterday.</div>
+</div>
+<div class="chinese">是啊，昨天我的寵物貓丟了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">249.</div>
+<div class="english">Oh, I'm sorry to hear that.</div>
+</div>
+<div class="chinese">聽到這消息我很遺憾。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">250.</div>
+<div class="english">That's all right.</div>
+</div>
+<div class="chinese">沒事兒。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">251.</div>
+<div class="english">Have you seen Kate lately?</div>
+</div>
+<div class="chinese">最近你看見凱特了嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">252.</div>
+<div class="english">No, I have no contact with her.</div>
+</div>
+<div class="chinese">沒有。我和她沒有一點兒聯繫。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">253.</div>
+<div class="english">I heard she got married last week.</div>
+</div>
+<div class="chinese">我聽說她上星期結婚了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">254.</div>
+<div class="english">Oh, how nice. Sorry, I've got to go now.</div>
+</div>
+<div class="chinese">那真好。對不起，我必須得走了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">255.</div>
+<div class="english">So do I. See you later. Keep in touch.</div>
+</div>
+<div class="chinese">我也是，再見。記得聯繫哦。</div>
+</div>
+
+<div class="chapter-title">貳八、Talking About The Past 談論過去</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">256.</div>
+<div class="english">I used to take a walk in the early morning.</div>
+</div>
+<div class="chinese">我過去常一大早出去散步。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">257.</div>
+<div class="english">He used to live in my neighborhood.</div>
+</div>
+<div class="chinese">他曾與我是鄰居。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">258.</div>
+<div class="english">Did you use to go fishing with friends?</div>
+</div>
+<div class="chinese">過去你常和朋友釣魚嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">259.</div>
+<div class="english">We have known each other for 6 years.</div>
+</div>
+<div class="chinese">我們認識有六年了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">260.</div>
+<div class="english">It has been a long time since last came here.</div>
+</div>
+<div class="chinese">自從我上次來這裡已經有很長時間了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">261.</div>
+<div class="english">Have you seen Mr. Smith recently?</div>
+</div>
+<div class="chinese">最近你見過史密斯先生嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">262.</div>
+<div class="english">They've been working on this project since last year.</div>
+</div>
+<div class="chinese">他們從去年開始一直都在做這個項目。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">263.</div>
+<div class="english">I've been watching TV all night.</div>
+</div>
+<div class="chinese">我看了一整晚的電視。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">264.</div>
+<div class="english">The movie began as soon as we got there.</div>
+</div>
+<div class="chinese">我們一到那兒電影就開始了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">265.</div>
+<div class="english">When I arrived at the station, the train had already left.</div>
+</div>
+<div class="chinese">我到車站時，火車已經開了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">266.</div>
+<div class="english">The late arrival of the ship had messed up all our plans.</div>
+</div>
+<div class="chinese">船到晚了，把我們的計劃全打亂了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">267.</div>
+<div class="english">I had thought he knew the time of the meeting.</div>
+</div>
+<div class="chinese">我原以為他知道開會時間。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">268.</div>
+<div class="english">They had excepted me to go with them.</div>
+</div>
+<div class="chinese">他們原本希望我和他們一起去。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">269.</div>
+<div class="english">That was the third time that I had visited the place.</div>
+</div>
+<div class="chinese">那是我第三次參觀那地方了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">270.</div>
+<div class="english">After I had finished my paper, I put it in the drawer.</div>
+</div>
+<div class="chinese">我寫完論文，就把它放在抽屜了。</div>
+</div>
+
+<div class="chapter-title">貳九、Asking About The Address 詢問地址</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">271.</div>
+<div class="english">Hi, Jack, where do you live now?</div>
+</div>
+<div class="chinese">你好，傑克，你現在住哪兒？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">272.</div>
+<div class="english">I live at 203 Curzon Street.</div>
+</div>
+<div class="chinese">我住在可勝街203號。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">273.</div>
+<div class="english">Curzon Street? Isn't Mary living there?</div>
+</div>
+<div class="chinese">可勝街？瑪麗不是也住那兒嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">274.</div>
+<div class="english">Yes, she lives just across the street.</div>
+</div>
+<div class="chinese">是的，她就住在街對面。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">275.</div>
+<div class="english">How long have you stayed there?</div>
+</div>
+<div class="chinese">在那兒住多久了？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">276.</div>
+<div class="english">Just a few months.</div>
+</div>
+<div class="chinese">才幾個月。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">277.</div>
+<div class="english">How about Mary? How long has she lived there?</div>
+</div>
+<div class="chinese">瑪麗怎麼樣？她在那兒住多久了？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">278.</div>
+<div class="english">She's been living there since her birth.</div>
+</div>
+<div class="chinese">她生下來就住那兒。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">279.</div>
+<div class="english">Will you stay there for long?</div>
+</div>
+<div class="chinese">你會在那兒待很長時間嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">280.</div>
+<div class="english">No, I'll move to Hollywood next month.</div>
+</div>
+<div class="chinese">不，我下個月搬到好萊塢去。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">281.</div>
+<div class="english">Oh, really? I'm moving there too.</div>
+</div>
+<div class="chinese">真的？我也會搬到那兒去。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">282.</div>
+<div class="english">Great. Then we can drink beer together.</div>
+</div>
+<div class="chinese">棒極了，我們可以一起喝啤酒了。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">283.</div>
+<div class="english">Yes, and you may stay there longer.</div>
+</div>
+<div class="chinese">對，而且你也許會在那兒住久一些。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">284.</div>
+<div class="english">I hope so.</div>
+</div>
+<div class="chinese">希望如此。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">285.</div>
+<div class="english">I'm sure we'll have a good time.</div>
+</div>
+<div class="chinese">我相信我們會很開心的。</div>
+</div>
+
+<div class="chapter-title">貳十、Asking Questions 提問題</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">286.</div>
+<div class="english">Where are you going?</div>
+</div>
+<div class="chinese">你去哪兒？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">287.</div>
+<div class="english">Where did you go for dinner yesterday?</div>
+</div>
+<div class="chinese">你們昨天去哪兒吃的飯？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">288.</div>
+<div class="english">When will he come to see you?</div>
+</div>
+<div class="chinese">他什麼時候來看你？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">289.</div>
+<div class="english">When did you buy the car?</div>
+</div>
+<div class="chinese">你什麼時候買的車？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">290.</div>
+<div class="english">Who told you?</div>
+</div>
+<div class="chinese">誰告訴你的？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">291.</div>
+<div class="english">Who will accompany you to the airport?</div>
+</div>
+<div class="chinese">誰將陪你去機場？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">292.</div>
+<div class="english">Why don't you agree?</div>
+</div>
+<div class="chinese">你為什麼不同意？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">293.</div>
+<div class="english">Why not go out for a walk?</div>
+</div>
+<div class="chinese">幹嗎不出去散步？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">294.</div>
+<div class="english">How did you doing spend your holiday?</div>
+</div>
+<div class="chinese">你假期怎麼過的？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">295.</div>
+<div class="english">How are you doing these days?</div>
+</div>
+<div class="chinese">這些日子你怎麼樣？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">296.</div>
+<div class="english">What did he say in the letter?</div>
+</div>
+<div class="chinese">他在信裡說什麼了？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">297.</div>
+<div class="english">What are you going to do with the books?</div>
+</div>
+<div class="chinese">你打算拿這些書怎麼辦？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">298.</div>
+<div class="english">What were you doing when I called?</div>
+</div>
+<div class="chinese">我打電話給你時你在幹嗎？</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">299.</div>
+<div class="english">I was about to leave.</div>
+</div>
+<div class="chinese">我正要出門。</div>
+</div>
+
+<div class="sentence-box" onclick="speak(this)">
+<div class="eng-row">
+<div class="num">300.</div>
+<div class="english">Can you guess what I was doing this morning?</div>
+</div>
+<div class="chinese">你能猜到今天上午我在做什麼嗎？</div>
+</div>
+
+    </div>
+
+<div id="page3" class="page">
+<h2>第參冊</h2>
+<div class="chapter-title">參一、 Measuring And Comparing 形容物品、度量、比較 聲音</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">301.</div> <div class="english">What's the height of the building?</div> </div> <div class="chinese">這座樓有多高？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">302.</div> <div class="english">How much does the elephant weight?</div> </div> <div class="chinese">這個大象有多重？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">303.</div> <div class="english">What's the color of your new dress?</div> </div> <div class="chinese">你的新衣服是什麼顏色的？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">304.</div> <div class="english">What's the size of your shoes?</div> </div> <div class="chinese">你的鞋多大尺寸？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">305.</div> <div class="english">My brother is twice as tall as your sister.</div> </div> <div class="chinese">我弟弟比你妹妹高一倍。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">306.</div> <div class="english">My grandma is 40 years older than me.</div> </div> <div class="chinese">我祖母比我大40歲。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">307.</div> <div class="english">This river is one third as long as that river.</div> </div> <div class="chinese">這條河只有那條河的三分之一長。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">308.</div> <div class="english">What's the shape of your balloon?</div> </div> <div class="chinese">你的氣球是什麼形狀？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">309.</div> <div class="english">How wide is this bridge?</div> </div> <div class="chinese">這座橋有多寬？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">310.</div> <div class="english">How thick is the ice here?</div> </div> <div class="chinese">這兒的冰有多厚？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">311.</div> <div class="english">This metal is harder than that one.</div> </div> <div class="chinese">這種金屬比那種硬。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">312.</div> <div class="english">He can run as fast as Jim.</div> </div> <div class="chinese">他跑的和吉姆一樣快。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">313.</div> <div class="english">Kate is smarter than I.</div> </div> <div class="chinese">凱特比我聰明。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">314.</div> <div class="english">How long do you watch TV every day?</div> </div> <div class="chinese">你每天看多長時間電視？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">315.</div> <div class="english">How often do you go swimming?</div> </div> <div class="chinese">你多久去游一次泳？</div> </div>
+<div class="chapter-title">參二、Asking For Help 尋求幫助</div>
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">316.</div> <div class="english">Would you please open the door for me?</div> </div> <div class="chinese">請你幫忙開個門好嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">317.</div> <div class="english">May I ask you a question?</div> </div> <div class="chinese">我能問你個問題嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">318.</div> <div class="english">Please give me a hand.</div> </div> <div class="chinese">請幫我個忙。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">319.</div> <div class="english">Could you do me a favor?</div> </div> <div class="chinese">能請你幫個忙嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">320.</div> <div class="english">Would you help me remove the refrigerator?</div> </div> <div class="chinese">能幫忙移一下冰箱嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">321.</div> <div class="english">Get me my coat, please.</div> </div> <div class="chinese">請幫我拿下外套。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">322.</div> <div class="english">Make me a cup of coffee, will you?</div> </div> <div class="chinese">給我沖杯咖啡，好嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">323.</div> <div class="english">Call me tomorrow if you have time.</div> </div> <div class="chinese">明天要有時間就給我打個電話。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">324.</div> <div class="english">Could you tell me where I can find these books?</div> </div> <div class="chinese">您能告訴我在哪兒能找到這些書嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">325.</div> <div class="english">Certainly.</div> </div> <div class="chinese">當然了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">326.</div> <div class="english">Witch pleasure.</div> </div> <div class="chinese">很高興。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">327.</div> <div class="english">I'm sorry. I'm engaged now.</div> </div> <div class="chinese">對不起，我現在正忙著。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">328.</div> <div class="english">I'm glad to, but I'm afraid I don't have the time.</div> </div> <div class="chinese">我很樂意，但我恐怕沒時間。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">329.</div> <div class="english">Would you mind closing the window for me?</div> </div> <div class="chinese">能幫我關一下窗戶嗎？（你介意關下窗戶嗎？）</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">330.</div> <div class="english">Not at all.</div> </div> <div class="chinese">當然可以。（當然不介意）</div> </div>
+<div class="chapter-title">參三、 Asking Directions 打聽情況和問路</div>
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">331.</div> <div class="english">Excuse me, madam. Could you tell me where the post office is?</div> </div> <div class="chinese">對不起，女士，請問郵局在哪裡？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">332.</div> <div class="english">It's just around the corner.</div> </div> <div class="chinese">轉彎就是。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">333.</div> <div class="english">Excuse me, how can I get to the bus station?</div> </div> <div class="chinese">對不起，汽車站怎麼走？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">334.</div> <div class="english">You can take the bus and get off at the second stop.</div> </div> <div class="chinese">你可以坐公共汽車第二站下。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">335.</div> <div class="english">Excuse me. Where is No.5 Street?</div> </div> <div class="chinese">對不起，第五大街在哪兒？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">336.</div> <div class="english">Go straight ahead and turn left at the second crossing.</div> </div> <div class="chinese">一直往前走，在第二個十字路口往左拐。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">337.</div> <div class="english">Excuse me. Can you tell me how to get to Mr. Hu's restaurant?</div> </div> <div class="chinese">對不起，你能告訴我怎麼去胡先生的餐館嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">338.</div> <div class="english">Go on for about 100 meters. It's on your left side. You can't miss it.</div> </div> <div class="chinese">往前走約100米，在你左手邊，你不會錯過的。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">339.</div> <div class="english">Which one is Mr. Jame's office?</div> </div> <div class="chinese">哪間是詹姆司先生的辦公室？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">340.</div> <div class="english">It's Room 201 on the second floor.</div> </div> <div class="chinese">二樓201房間。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">341.</div> <div class="english">Can I use the lift?</div> </div> <div class="chinese">我能用電梯嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">342.</div> <div class="english">Sorry, it's broken. You have to use the stairs.</div> </div> <div class="chinese">對不起，它壞了，你只能走樓梯了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">343.</div> <div class="english">Where are the stairs?</div> </div> <div class="chinese">樓梯在哪裡呢？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">344.</div> <div class="english">Go along the corridor and it's on your right side.</div> </div> <div class="chinese">沿著走廊走，在你右手邊。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">345.</div> <div class="english">Thank you for directions.</div> </div> <div class="chinese">感謝你為我指路。</div> </div>
+<div class="chapter-title">參四、 About Marriage 關於婚姻</div>
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">346.</div> <div class="english">Are you married?</div> </div> <div class="chinese">你結婚了嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">347.</div> <div class="english">I'm single.</div> </div> <div class="chinese">我現在單身。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">348.</div> <div class="english">You have a younger brother, don't you?</div> </div> <div class="chinese">你有個弟弟，是嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">349.</div> <div class="english">How is your family?</div> </div> <div class="chinese">你的家人怎麼樣？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">350.</div> <div class="english">She's engaged/married to John.</div> </div> <div class="chinese">她和約翰訂婚/結婚了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">351.</div> <div class="english">How long have you been married?</div> </div> <div class="chinese">你們結婚多久了？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">352.</div> <div class="english">We've been married for 2 years.</div> </div> <div class="chinese">我們結婚兩年了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">353.</div> <div class="english">My parents got married in 1954.</div> </div> <div class="chinese">我父母1954年結婚的。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">354.</div> <div class="english">Mary gave birth to a baby last week.</div> </div> <div class="chinese">瑪麗上星期做媽媽了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">355.</div> <div class="english">They've been divorced.</div> </div> <div class="chinese">他們已離婚了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">356.</div> <div class="english">His wife died a year ago. Now he lives alone.</div> </div> <div class="chinese">他妻子去年去世了。現在他一個人住。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">357.</div> <div class="english">My aunt will come to live with me for some days.</div> </div> <div class="chinese">我阿姨會來和我住一些日子。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">358.</div> <div class="english">John has his own family now.</div> </div> <div class="chinese">約翰現在有自己的家了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">359.</div> <div class="english">Do you live with your parents?</div> </div> <div class="chinese">你和你父母住一起嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">360.</div> <div class="english">No. I live in my own house.</div> </div> <div class="chinese">不，我住在自己的房子裡。</div> </div>
+<div class="chapter-title">參五、 Talking About Neighbors And Friends 談論鄰居和朋友</div>
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">361.</div> <div class="english">Do you know Mary?</div> </div> <div class="chinese">你認識瑪麗嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">362.</div> <div class="english">Sure. We are friends since primary school.</div> </div> <div class="chinese">當然，我們從小學就是朋友了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">363.</div> <div class="english">Really? I was introduced to her just last weekend.</div> </div> <div class="chinese">真的？上週末我才被介紹給她。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">364.</div> <div class="english">What is she doing now?</div> </div> <div class="chinese">她現在幹些什麼呢？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">365.</div> <div class="english">She told me she wanted to start a company.</div> </div> <div class="chinese">她告訴我她想開公司。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">366.</div> <div class="english">Start a company? But I thought she would be a scholar.</div> </div> <div class="chinese">開公司？我原以為她會成為一個學者。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">367.</div> <div class="english">People are always changing, aren't they?</div> </div> <div class="chinese">人總是在變，不是嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">368.</div> <div class="english">Yes, you're right. After all, she is smart enough to go into business.</div> </div> <div class="chinese">是啊，你說的對。畢竟，她完全有經商才智。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">369.</div> <div class="english">But she doesn't have much experience.</div> </div> <div class="chinese">但她沒有太多經驗。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">370.</div> <div class="english">You two don't have much contact？</div> </div> <div class="chinese">你們倆沒怎麼聯繫嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">371.</div> <div class="english">No, I only wrote her one letter this year.</div> </div> <div class="chinese">是的，今年我才給她寫過一封信。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">372.</div> <div class="english">And she?</div> </div> <div class="chinese">她呢？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">373.</div> <div class="english">She sent me a Christmas card last year.</div> </div> <div class="chinese">去年寄過一張聖誕卡。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">374.</div> <div class="english">Oh, that's not good.</div> </div> <div class="chinese">哦，那可不好。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">375.</div> <div class="english">Yes, we should try to contact more.</div> </div> <div class="chinese">是的，我們應該聯繫多點。</div> </div>
+<div class="chapter-title">參六、 Planning The Future 計劃將來 聲音</div>
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">376.</div> <div class="english">What time are you going to leave for the airport tomorrow?</div> </div> <div class="chinese">你明天打算什麼時候去機場？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">377.</div> <div class="english">Is he coming to dinner?</div> </div> <div class="chinese">他回來吃飯嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">378.</div> <div class="english">I'm going to the bookstore. Will you go with me?</div> </div> <div class="chinese">我要去書店，你和我去嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">379.</div> <div class="english">They're going to discuss it at the meeting next Friday.</div> </div> <div class="chinese">他們將在下週五的會上討論這個問題。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">380.</div> <div class="english">I'll be waiting for you at the restaurant this time tomorrow.</div> </div> <div class="chinese">我明天這時候在餐館等你。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">381.</div> <div class="english">After I get home, I'll call you.</div> </div> <div class="chinese">到家以後，我會給你打電話。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">382.</div> <div class="english">How will you spend the evening?</div> </div> <div class="chinese">你晚上幹什麼？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">383.</div> <div class="english">I'll probably stay home and watch TV.</div> </div> <div class="chinese">我可能會呆在家看電視。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">384.</div> <div class="english">What's your plan for the summer holiday?</div> </div> <div class="chinese">暑假計劃幹什麼？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">385.</div> <div class="english">I'm thinking about a visit to Paris.</div> </div> <div class="chinese">我在考慮去巴黎旅遊。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">386.</div> <div class="english">There's going to be a pottery exhibition at the art gallery.</div> </div> <div class="chinese">藝術館將有一次陶瓷展。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">387.</div> <div class="english">You are still thinking about a Ph.D., aren't you?</div> </div> <div class="chinese">你還是想學成博士，是嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">388.</div> <div class="english">What will you do about it?</div> </div> <div class="chinese">你會拿這事怎麼辦？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">389.</div> <div class="english">What do you want to do after graduation?</div> </div> <div class="chinese">你畢業後想幹什麼？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">390.</div> <div class="english">I'll further my study.</div> </div> <div class="chinese">我想繼續深造。</div> </div>
+<div class="chapter-title">參七、 Talking About The Weather 談論天氣</div>
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">391.</div> <div class="english">Have you heard the weather forecast?</div> </div> <div class="chinese">你聽天氣預報了嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">392.</div> <div class="english">No, what does it say?</div> </div> <div class="chinese">沒有，它說什麼了？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">393.</div> <div class="english">We'll have fine weather for the next few days?</div> </div> <div class="chinese">以後幾天天氣晴朗。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">394.</div> <div class="english">But it's still raining today!</div> </div> <div class="chinese">可今天還在下雨。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">395.</div> <div class="english">It is said it will clear up tonight.</div> </div> <div class="chinese">天氣預報說今晚雨就會停。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">396.</div> <div class="english">What will it be after the clear weather?</div> </div> <div class="chinese">晴天以後天氣會怎麼樣？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">397.</div> <div class="english">It says a storm may come next month.</div> </div> <div class="chinese">天氣預報說下個月會有一場暴風雨。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">398.</div> <div class="english">And it may get colder, it's already November.</div> </div> <div class="chinese">並且天氣會更冷。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">399.</div> <div class="english">Yes, and I hope we can have some snow this winter.</div> </div> <div class="chinese">是的，我希望今年冬天會下雪。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">400.</div> <div class="english">I'm afraid it won't be cold enough for a snowfall.</div> </div> <div class="chinese">我恐怕天不會冷的下雪。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">401.</div> <div class="english">But last year we had a big one.</div> </div> <div class="chinese">但去年下了大雪。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">402.</div> <div class="english">Yes, but you know global warming may raise the temperature.</div> </div> <div class="chinese">是的，但全球變暖會使氣溫上升。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">403.</div> <div class="english">You are probably right.</div> </div> <div class="chinese">你也許是對的。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">404.</div> <div class="english">I'm going skating in the Alps next month.</div> </div> <div class="chinese">下個月我去阿爾卑斯山滑雪。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">405.</div> <div class="english">I hope the weather there is cold enough.</div> </div> <div class="chinese">我希望那兒天氣夠冷。</div> </div>
+<div class="chapter-title">參八、 About Sickness 關於生病</div>
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">406.</div> <div class="english">How are you feeling today?</div> </div> <div class="chinese">你今天感覺怎麼樣？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">407.</div> <div class="english">I don't feel very well.</div> </div> <div class="chinese">覺得不太舒服。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">408.</div> <div class="english">Do you feel better now?</div> </div> <div class="chinese">現在覺得好點了嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">409.</div> <div class="english">Much better.</div> </div> <div class="chinese">好多了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">410.</div> <div class="english">I'm sick.</div> </div> <div class="chinese">我病了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">411.</div> <div class="english">He's got a bad headache.</div> </div> <div class="chinese">他頭痛的厲害。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">412.</div> <div class="english">My fever is gone.</div> </div> <div class="chinese">我退燒了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">413.</div> <div class="english">What's the matter with you?</div> </div> <div class="chinese">你怎麼啦？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">414.</div> <div class="english">I've got a pain in my back.</div> </div> <div class="chinese">我背疼。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">415.</div> <div class="english">It's nothing serious.</div> </div> <div class="chinese">不礙事。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">416.</div> <div class="english">I hope you'll be well soon.</div> </div> <div class="chinese">祝你早日康復。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">417.</div> <div class="english">I think I'll be all right.</div> </div> <div class="chinese">我想沒事的。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">418.</div> <div class="english">The doctor says that I'll be all right.</div> </div> <div class="chinese">醫生說我會好起來。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">419.</div> <div class="english">Take the medicine three times a day.</div> </div> <div class="chinese">這藥一天吃三次。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">420.</div> <div class="english">Should I stay in bed?</div> </div> <div class="chinese">我應該躺在床上休息嗎？</div> </div>
+<div class="chapter-title">參九、 Talking About Habits 談論日常生活習慣</div>
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">421.</div> <div class="english">What time do you usually get up?</div> </div> <div class="chinese">你通常幾點起床？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">422.</div> <div class="english">I usually get up at six-thirty.</div> </div> <div class="chinese">我通常六點半起床。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">423.</div> <div class="english">I have the habit of taking a walk after dinner.</div> </div> <div class="chinese">我有晚飯後散步的習慣。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">424.</div> <div class="english">He used to smoke, but he has given it up.</div> </div> <div class="chinese">他以前抽煙，但現在戒了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">425.</div> <div class="english">You should get rid of your bad habits.</div> </div> <div class="chinese">你應該改掉你的壞習慣。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">426.</div> <div class="english">It's hard to form a good habit.</div> </div> <div class="chinese">養成好習慣很難。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">427.</div> <div class="english">She always goes to bed early and gets up early.</div> </div> <div class="chinese">她總是早睡早起。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">428.</div> <div class="english">I'm used to drinking a glass of milk before sleep.</div> </div> <div class="chinese">我習慣睡前喝杯牛奶。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">429.</div> <div class="english">He is always late for meetings.</div> </div> <div class="chinese">他開會總是遲到。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">430.</div> <div class="english">You must be punctual.</div> </div> <div class="chinese">你必須守時。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">431.</div> <div class="english">I'm trying to develop a reading habit.</div> </div> <div class="chinese">我正試著養成閱讀習慣。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">432.</div> <div class="english">Do you exercise every morning?</div> </div> <div class="chinese">你每天早上鍛煉嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">433.</div> <div class="english">I go jogging every other day.</div> </div> <div class="chinese">我每隔一天去慢跑。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">434.</div> <div class="english">We usually have dinner at 7 o'clock.</div> </div> <div class="chinese">我們通常七點吃晚飯。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">435.</div> <div class="english">We go to bed at 10:30.</div> </div> <div class="chinese">我們十點半睡覺。</div> </div>
+<div class="chapter-title">參十、 Asking For Other's Opinions 詢問別人的意見</div>
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">436.</div> <div class="english">What do you think about it?</div> </div> <div class="chinese">你對此怎麼看？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">437.</div> <div class="english">Is that right?</div> </div> <div class="chinese">那樣對嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">438.</div> <div class="english">Absolutely right.</div> </div> <div class="chinese">絕對正確。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">439.</div> <div class="english">I think you're mistaken about that.</div> </div> <div class="chinese">我想你那樣不對。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">440.</div> <div class="english">Is that ok?</div> </div> <div class="chinese">這樣行嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">441.</div> <div class="english">That's ok/fine.</div> </div> <div class="chinese">挺好的。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">442.</div> <div class="english">That's excellent.</div> </div> <div class="chinese">那太棒了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">443.</div> <div class="english">He was absent yesterday.</div> </div> <div class="chinese">昨天他沒到。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">444.</div> <div class="english">Do you have any idea why?</div> </div> <div class="chinese">你知道為什麼嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">445.</div> <div class="english">I suppose he was sick.</div> </div> <div class="chinese">我猜他大概是病了。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">446.</div> <div class="english">Will it rain tomorrow?</div> </div> <div class="chinese">明天會下雨嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">447.</div> <div class="english">No, I don't think so.</div> </div> <div class="chinese">不，我想不會。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">448.</div> <div class="english">Do you really want to know what I think?</div> </div> <div class="chinese">你真想知道我怎麼想嗎？</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">449.</div> <div class="english">Please give me your advice.</div> </div> <div class="chinese">請給我提些建議。</div> </div> 
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">450.</div> <div class="english">I want to hear your opinion.</div> </div> <div class="chinese">我想聽聽你們想法。</div> </div>
+
+</div>
+
+
+<div id="page4" class="page"> 
+<h2>第肆冊</h2>
+<div class="chapter-title">肆一、Identifying Objects 辨認事物</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">451.</div> <div class="english">What's this?</div> </div> <div class="chinese">這是什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">452.</div> <div class="english">It's a pencil.</div> </div> <div class="chinese">這是一支鉛筆。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">453.</div> <div class="english">What's that?</div> </div> <div class="chinese">那是什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">454.</div> <div class="english">It's an apple.</div> </div> <div class="chinese">那是一個蘋果。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">455.</div> <div class="english">Is this your book?</div> </div> <div class="chinese">這是你的書嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">456.</div> <div class="english">No, it isn't. It's his book.</div> </div> <div class="chinese">不，不是。那是他的書。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">457.</div> <div class="english">Whose pen is this?</div> </div> <div class="chinese">這是誰的鋼筆？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">458.</div> <div class="english">It's mine.</div> </div> <div class="chinese">是我的。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">459.</div> <div class="english">What are these?</div> </div> <div class="chinese">這些是什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">460.</div> <div class="english">They are flowers.</div> </div> <div class="chinese">它們是花。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">461.</div> <div class="english">What are those?</div> </div> <div class="chinese">那些是什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">462.</div> <div class="english">They are my notebooks.</div> </div> <div class="chinese">那些是我的筆記本。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">463.</div> <div class="english">Are these your shoes?</div> </div> <div class="chinese">這些是你的鞋嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">464.</div> <div class="english">Yes, they are.</div> </div> <div class="chinese">是的，它們是。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">465.</div> <div class="english">Whose are those clothes?</div> </div> <div class="chinese">那些衣服是誰的？</div> </div>
+
+<div class="chapter-title">肆二、Describing Objects 形容事物</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">466.</div> <div class="english">The desk is very heavy.</div> </div> <div class="chinese">這張書桌很重。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">467.</div> <div class="english">That box is light.</div> </div> <div class="chinese">那個盒子很輕。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">468.</div> <div class="english">This street is very wide.</div> </div> <div class="chinese">這條街很寬。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">469.</div> <div class="english">The river is deep.</div> </div> <div class="chinese">這條河很深。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">470.</div> <div class="english">Is your house big?</div> </div> <div class="chinese">你的房子大嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">471.</div> <div class="english">No, it's quite small.</div> </div> <div class="chinese">不，挺小的。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">472.</div> <div class="english">This knife is sharp.</div> </div> <div class="chinese">這把刀很鋒利。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">473.</div> <div class="english">The mountain is high.</div> </div> <div class="chinese">這座山很高。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">474.</div> <div class="english">Is the water hot?</div> </div> <div class="chinese">水熱嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">475.</div> <div class="english">It's cold.</div> </div> <div class="chinese">很冷。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">476.</div> <div class="english">This room is bright.</div> </div> <div class="chinese">這間屋子很亮。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">477.</div> <div class="english">That corridor is dark.</div> </div> <div class="chinese">那條走廊很暗。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">478.</div> <div class="english">Your dress is beautiful.</div> </div> <div class="chinese">你的連衣裙很漂亮。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">479.</div> <div class="english">The film is interesting.</div> </div> <div class="chinese">這部電影很有趣。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">480.</div> <div class="english">It's a difficult question.</div> </div> <div class="chinese">這是一個很難的問題。</div> </div>
+
+<div class="chapter-title">肆三、Talking About Ownership 談論所屬</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">481.</div> <div class="english">Do you have a camera?</div> </div> <div class="chinese">你有相機嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">482.</div> <div class="english">Yes, I do. I have a new one.</div> </div> <div class="chinese">是的，我有。我有一個新的。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">483.</div> <div class="english">Does he have a car?</div> </div> <div class="chinese">他有汽車嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">484.</div> <div class="english">No, he doesn't. But he has a bike.</div> </div> <div class="chinese">不，他沒有。但他有一輛自行車。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">485.</div> <div class="english">How many books do you have?</div> </div> <div class="chinese">你有多少本書？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">486.</div> <div class="english">I have about fifty books.</div> </div> <div class="chinese">我有大約五十本書。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">487.</div> <div class="english">Is there any ink in the bottle?</div> </div> <div class="chinese">瓶子裡有墨水嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">488.</div> <div class="english">There is some.</div> </div> <div class="chinese">有一點。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">489.</div> <div class="english">There isn't any milk in the glass.</div> </div> <div class="chinese">杯子裡沒有牛奶。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">490.</div> <div class="english">How much money do you have with you?</div> </div> <div class="chinese">你隨身帶了多少錢？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">491.</div> <div class="english">I have only ten dollars.</div> </div> <div class="chinese">我只有十美元。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">492.</div> <div class="english">What do you have in your bag?</div> </div> <div class="chinese">你書包裡有什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">493.</div> <div class="english">I have some stamps.</div> </div> <div class="chinese">我有一些郵票。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">494.</div> <div class="english">We have a lot of friends here.</div> </div> <div class="chinese">我們這兒有很多朋友。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">495.</div> <div class="english">They have a big house in the country.</div> </div> <div class="chinese">他們在鄉下有一棟大房子。</div> </div>
+
+<div class="chapter-title">肆四、Talking About People 談論人</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">496.</div> <div class="english">Who is that man?</div> </div> <div class="chinese">那個男人是誰？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">497.</div> <div class="english">He is my teacher.</div> </div> <div class="chinese">他是我的老師。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">498.</div> <div class="english">Is that woman your mother?</div> </div> <div class="chinese">那個女人是你母親嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">499.</div> <div class="english">No, she is my aunt.</div> </div> <div class="chinese">不，她是我的姨媽。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">500.</div> <div class="english">What's his name?</div> </div> <div class="chinese">他叫什麼名字？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">501.</div> <div class="english">His name is John Smith.</div> </div> <div class="chinese">他名字叫約翰·史密斯。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">502.</div> <div class="english">What's her job?</div> </div> <div class="chinese">她是做什麼工作的？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">503.</div> <div class="english">She is a nurse.</div> </div> <div class="chinese">她是一名護士。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">504.</div> <div class="english">Are those boys students?</div> </div> <div class="chinese">那些男孩是學生嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">505.</div> <div class="english">Yes, they are.</div> </div> <div class="chinese">是的，他們是。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">506.</div> <div class="english">Where is your father?</div> </div> <div class="chinese">你父親在哪兒？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">507.</div> <div class="english">He is in the garden.</div> </div> <div class="chinese">他在花園裡。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">508.</div> <div class="english">What is your brother doing?</div> </div> <div class="chinese">你哥哥在做什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">509.</div> <div class="english">He is reading a book.</div> </div> <div class="chinese">他在看書。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">510.</div> <div class="english">How old is your sister?</div> </div> <div class="chinese">你姐姐多大了？</div> </div>
+
+<div class="chapter-title">肆五、Talking About Time 談論時間</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">511.</div> <div class="english">What time is it?</div> </div> <div class="chinese">現在幾點？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">512.</div> <div class="english">It's eight o'clock.</div> </div> <div class="chinese">現在八點鐘。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">513.</div> <div class="english">It's half past nine.</div> </div> <div class="chinese">現在九點半。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">514.</div> <div class="english">It's a quarter past ten.</div> </div> <div class="chinese">現在十點一刻。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">515.</div> <div class="english">It's ten to eleven.</div> </div> <div class="chinese">現在十點五十（十一點差十分）。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">516.</div> <div class="english">My watch is fast.</div> </div> <div class="chinese">我的錶快了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">517.</div> <div class="english">His watch is slow.</div> </div> <div class="chinese">他的錶慢了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">518.</div> <div class="english">When do you get up every day?</div> </div> <div class="chinese">你每天幾點起床？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">519.</div> <div class="english">I get up at seven.</div> </div> <div class="chinese">我七點起床。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">520.</div> <div class="english">What time do you have breakfast?</div> </div> <div class="chinese">你幾點吃早飯？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">521.</div> <div class="english">I have breakfast at seven-thirty.</div> </div> <div class="chinese">我七點半吃早飯。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">522.</div> <div class="english">When does the class begin?</div> </div> <div class="chinese">什麼時候開始上課？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">523.</div> <div class="english">It begins at eight.</div> </div> <div class="chinese">八點開始上課。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">524.</div> <div class="english">When do you go to bed?</div> </div> <div class="chinese">你幾點睡覺？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">525.</div> <div class="english">I go to bed at about eleven.</div> </div> <div class="chinese">我大約十一點睡覺。</div> </div>
+
+<div class="chapter-title">肆六、Talking About Dates 談論日期</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">526.</div> <div class="english">What's the date today?</div> </div> <div class="chinese">今天是幾號？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">527.</div> <div class="english">Today is October 1st.</div> </div> <div class="chinese">今天是十月一號。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">528.</div> <div class="english">When is your birthday?</div> </div> <div class="chinese">你的生日是什麼時候？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">529.</div> <div class="english">My birthday is May 20th.</div> </div> <div class="chinese">我的生日是五月二十號。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">530.</div> <div class="english">When were you born?</div> </div> <div class="chinese">你什麼時候出生的？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">531.</div> <div class="english">I was born in 1985.</div> </div> <div class="chinese">我出生於1985年。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">532.</div> <div class="english">Today is my birthday.</div> </div> <div class="chinese">今天是我的生日。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">533.</div> <div class="english">Happy birthday to you!</div> </div> <div class="chinese">祝你生日快樂！</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">534.</div> <div class="english">Thank you.</div> </div> <div class="chinese">謝謝。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">535.</div> <div class="english">What day is it today?</div> </div> <div class="chinese">今天星期幾？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">536.</div> <div class="english">Today is Monday.</div> </div> <div class="chinese">今天星期一。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">537.</div> <div class="english">Tomorrow is Tuesday.</div> </div> <div class="chinese">明天是星期二。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">538.</div> <div class="english">What day was yesterday?</div> </div> <div class="chinese">昨天是星期幾？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">539.</div> <div class="english">Yesterday was Sunday.</div> </div> <div class="chinese">昨天是星期天。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">540.</div> <div class="english">We have no classes on Saturday.</div> </div> <div class="chinese">我們星期六沒課。</div> </div>
+
+<div class="chapter-title">肆七、About Seasons And Weather 關於季節與天氣</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">541.</div> <div class="english">How many seasons are there in a year?</div> </div> <div class="chinese">一年有幾個季節？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">542.</div> <div class="english">There are four.</div> </div> <div class="chinese">有四個。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">543.</div> <div class="english">What are they?</div> </div> <div class="chinese">它們是什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">544.</div> <div class="english">They are spring, summer, autumn and winter.</div> </div> <div class="chinese">是春、夏、秋、冬。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">545.</div> <div class="english">Which season do you like best?</div> </div> <div class="chinese">你最喜歡哪個季節？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">546.</div> <div class="english">I like spring best.</div> </div> <div class="chinese">我最喜歡春天。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">547.</div> <div class="english">Why?</div> </div> <div class="chinese">為什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">548.</div> <div class="english">Because it's very beautiful.</div> </div> <div class="chinese">因為春天很美。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">549.</div> <div class="english">It often rains in spring.</div> </div> <div class="chinese">春天常下雨。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">550.</div> <div class="english">It's very hot in summer.</div> </div> <div class="chinese">夏天很熱。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">551.</div> <div class="english">It's cool in autumn.</div> </div> <div class="chinese">秋天很涼爽。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">552.</div> <div class="english">It's very cold in winter.</div> </div> <div class="chinese">冬天很冷。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">553.</div> <div class="english">It's a fine day today.</div> </div> <div class="chinese">今天天氣很好。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">554.</div> <div class="english">The sun is shining.</div> </div> <div class="chinese">陽光燦爛。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">555.</div> <div class="english">It's going to rain.</div> </div> <div class="chinese">要下雨了。</div> </div>
+
+<div class="chapter-title">肆八、About School And Study 關於學校與學習</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">556.</div> <div class="english">Which school are you in?</div> </div> <div class="chinese">你在哪所學校上學？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">557.</div> <div class="english">I'm in No. 1 Middle School.</div> </div> <div class="chinese">我在第一中學。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">558.</div> <div class="english">Which grade are you in?</div> </div> <div class="chinese">你在幾年級？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">559.</div> <div class="english">I'm in Grade Two.</div> </div> <div class="chinese">我在二年級。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">560.</div> <div class="english">Which class are you in?</div> </div> <div class="chinese">你在哪個班？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">561.</div> <div class="english">I'm in Class Three.</div> </div> <div class="chinese">我在三班。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">562.</div> <div class="english">How many students are there in your class?</div> </div> <div class="chinese">你們班有多少學生？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">563.</div> <div class="english">There are forty-five students.</div> </div> <div class="chinese">有四十五個學生。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">564.</div> <div class="english">What subjects do you study?</div> </div> <div class="chinese">你學哪些科目？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">565.</div> <div class="english">I study Chinese, English, Maths and so on.</div> </div> <div class="chinese">我學語文、英語、數學等等。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">566.</div> <div class="english">Do you like English?</div> </div> <div class="chinese">你喜歡英語嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">567.</div> <div class="english">Yes, very much.</div> </div> <div class="chinese">是的，非常喜歡。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">568.</div> <div class="english">Is English difficult?</div> </div> <div class="chinese">英語難嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">569.</div> <div class="english">No, it's very easy.</div> </div> <div class="chinese">不，很簡單。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">570.</div> <div class="english">We have five classes every morning.</div> </div> <div class="chinese">我們每天早上有五節課。</div> </div>
+
+<div class="chapter-title">肆九、About Languages 關於語言</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">571.</div> <div class="english">Can you speak English?</div> </div> <div class="chinese">你會說英語嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">572.</div> <div class="english">Yes, I can speak a little.</div> </div> <div class="chinese">是的，我會說一點。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">573.</div> <div class="english">Does your friend speak Chinese?</div> </div> <div class="chinese">你的朋友會說中文嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">574.</div> <div class="english">Yes, he speaks it very well.</div> </div> <div class="chinese">是的，他說得很好。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">575.</div> <div class="english">What's your native language?</div> </div> <div class="chinese">你的母語是什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">576.</div> <div class="english">My native language is Chinese.</div> </div> <div class="chinese">我的母語是中文。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">577.</div> <div class="english">How long have you been learning English?</div> </div> <div class="chinese">你學英語多久了？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">578.</div> <div class="english">For about three years.</div> </div> <div class="chinese">大約三年了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">579.</div> <div class="english">Your English is very good.</div> </div> <div class="chinese">你的英語很好。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">580.</div> <div class="english">Thank you for saying so.</div> </div> <div class="chinese">謝謝你這麼說。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">581.</div> <div class="english">I want to improve my English.</div> </div> <div class="chinese">我想提高我的英語水平。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">582.</div> <div class="english">You should practice more.</div> </div> <div class="chinese">你應該多練習。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">583.</div> <div class="english">I'll do my best.</div> </div> <div class="chinese">我會盡力的。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">584.</div> <div class="english">Do you have an English dictionary?</div> </div> <div class="chinese">你有英語詞典嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">585.</div> <div class="english">Yes, I have one.</div> </div> <div class="chinese">是的，我有一本。</div> </div>
+
+<div class="chapter-title">肆十、Asking For Prices 詢價</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">586.</div> <div class="english">How much is this book?</div> </div> <div class="chinese">這本書多少錢？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">587.</div> <div class="english">It's five dollars.</div> </div> <div class="chinese">五美元。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">588.</div> <div class="english">How much are these apples?</div> </div> <div class="chinese">這些蘋果多少錢？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">589.</div> <div class="english">They are two dollars a kilo.</div> </div> <div class="chinese">兩美元一公斤。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">590.</div> <div class="english">That's very expensive.</div> </div> <div class="chinese">那太貴了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">591.</div> <div class="english">It's quite cheap.</div> </div> <div class="chinese">挺便宜的。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">592.</div> <div class="english">Can you give me a discount?</div> </div> <div class="chinese">能給我打個折嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">593.</div> <div class="english">I'll take it.</div> </div> <div class="chinese">我買下了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">594.</div> <div class="english">Anything else?</div> </div> <div class="chinese">還要別的嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">595.</div> <div class="english">No, thank you.</div> </div> <div class="chinese">不要了，謝謝。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">596.</div> <div class="english">How much do I owe you?</div> </div> <div class="chinese">我該付你多少錢？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">597.</div> <div class="english">Twenty dollars in all.</div> </div> <div class="chinese">一共二十美元。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">598.</div> <div class="english">Here is the money.</div> </div> <div class="chinese">錢在這兒。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">599.</div> <div class="english">Here is your change.</div> </div> <div class="chinese">這是找你的零錢。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">600.</div> <div class="english">Thank you. Goodbye.</div> </div> <div class="chinese">謝謝。再見。</div> </div>
+
+</div>
+
+
+<div id="page5" class="page"> 
+<h2>第伍冊</h2>
+<div class="chapter-title">伍一、About Feelings 關於感情</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">601.</div> <div class="english">How are you feeling today?</div> </div> <div class="chinese">你今天感覺怎麼樣？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">602.</div> <div class="english">I feel much better.</div> </div> <div class="chinese">我感覺好多了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">603.</div> <div class="english">I'm glad to hear that.</div> </div> <div class="chinese">聽你這麼說我很高興。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">604.</div> <div class="english">Are you happy?</div> </div> <div class="chinese">你快樂嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">605.</div> <div class="english">Yes, I am very happy.</div> </div> <div class="chinese">是的，我很開心。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">606.</div> <div class="english">What a boring movie it is!</div> </div> <div class="chinese">多麼無聊的一場電影啊。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">607.</div> <div class="english">How can he give us such a tedious lecture!</div> </div> <div class="chinese">他怎麼能做這麼沉悶乏味的演講。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">608.</div> <div class="english">How fragrant the flowers are!</div> </div> <div class="chinese">這些花真香！ </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">609.</div> <div class="english">The party is making too much noise.</div> </div> <div class="chinese">這次聚會太吵了。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">610.</div> <div class="english">You look elegant in that dress.</div> </div> <div class="chinese">你穿這條裙子顯的很漂亮。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">611.</div> <div class="english">The coat doesn't suit you.</div> </div> <div class="chinese">這件外衣不太適合你。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">612.</div> <div class="english">His flattery makes me sick.</div> </div> <div class="chinese">他的恭維讓我噁心。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">613.</div> <div class="english">We had a good time.</div> </div> <div class="chinese">我們玩的很開心。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">614.</div> <div class="english">We enjoyed ourselves very much.</div> </div> <div class="chinese">我們玩的很開心。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">615.</div> <div class="english">I am bored to death.</div> </div> <div class="chinese">我無聊死了。 </div> </div>
+
+<div class="chapter-title">伍二、Looking For A House 尋找住房</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">616.</div> <div class="english">This house is for rent.</div> </div> <div class="chinese">此房出租。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">617.</div> <div class="english">It's really a bargain.</div> </div> <div class="chinese">租金很便宜。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">618.</div> <div class="english">I want to rent a furnished house.</div> </div> <div class="chinese">我想要有傢具的房子。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">619.</div> <div class="english">That house is for sale. It has central heating.</div> </div> <div class="chinese">此房出售，房子裡有供暖設備。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">620.</div> <div class="english">What kind of furniture do you like?</div> </div> <div class="chinese">你喜歡什麼樣的傢具？ </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">621.</div> <div class="english">This is a rather old house. It needs painting.</div> </div> <div class="chinese">這是一間相當舊的房子，需要油漆。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">622.</div> <div class="english">I want a house with a garden.</div> </div> <div class="chinese">我想要一間帶花園的房子。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">623.</div> <div class="english">How much is the rent per month?</div> </div> <div class="chinese">每個月租金多少？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">624.</div> <div class="english">The rent is 500 dollars a month.</div> </div> <div class="chinese">月租是500美元。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">625.</div> <div class="english">Is water and electricity included in the rent?</div> </div> <div class="chinese">租金包括水電費嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">626.</div> <div class="english">No, you have to pay for them yourself.</div> </div> <div class="chinese">不，你得自己付。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">627.</div> <div class="english">Where is the house located?</div> </div> <div class="chinese">房子在哪個位置？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">628.</div> <div class="english">It's in a very quiet street.</div> </div> <div class="chinese">在一條很安靜的街上。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">629.</div> <div class="english">Is it far from the bus stop?</div> </div> <div class="chinese">離公車站遠嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">630.</div> <div class="english">No, it's quite near.</div> </div> <div class="chinese">不，很近。</div> </div>
+
+<div class="chapter-title">伍三、About Clothes 關於衣服</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">631.</div> <div class="english">What are you going to wear for the party?</div> </div> <div class="chinese">派對你要穿什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">632.</div> <div class="english">I'll wear my blue dress.</div> </div> <div class="chinese">我會穿我的藍色洋裝。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">633.</div> <div class="english">Is this shirt made of cotton?</div> </div> <div class="chinese">這件襯衫是純棉的嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">634.</div> <div class="english">No, it's made of silk.</div> </div> <div class="chinese">不，是絲綢做的。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">635.</div> <div class="english">The color is too bright for me.</div> </div> <div class="chinese">這顏色對我來說太亮了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">636.</div> <div class="english">It fits you very well.</div> </div> <div class="chinese">這件很合你的身。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">637.</div> <div class="english">This pair of shoes is too small for me.</div> </div> <div class="chinese">這雙鞋對我來說太小了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">638.</div> <div class="english">Try on this pair, please.</div> </div> <div class="chinese">請試試這一雙。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">639.</div> <div class="english">They are very comfortable.</div> </div> <div class="chinese">它們穿著很舒服。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">640.</div> <div class="english">Your tie matches your suit perfectly.</div> </div> <div class="chinese">你的領帶和西裝很搭。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">641.</div> <div class="english">I want to buy a leather jacket.</div> </div> <div class="chinese">我想買一件皮夾克。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">642.</div> <div class="english">Is there anything wrong with my clothes?</div> </div> <div class="chinese">我的衣服有什麼問題嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">643.</div> <div class="english">No, you look great.</div> </div> <div class="chinese">不，你看起來很棒。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">644.</div> <div class="english">You forgot to fasten your buttons.</div> </div> <div class="chinese">你忘了系扣子。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">645.</div> <div class="english">Take off your hat. It doesn't fit.</div> </div> <div class="chinese">取下你的帽子，它不適合你。 </div> </div>
+
+<div class="chapter-title">伍四、Expressing Different Opinions 表達不同的觀點</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">646.</div> <div class="english">He is a very creative student.</div> </div> <div class="chinese">他是個很有創造力的學生。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">647.</div> <div class="english">What you have said about this is very interesting.</div> </div> <div class="chinese">你說的很有意思。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">648.</div> <div class="english">I cannot agree with you on this point.</div> </div> <div class="chinese">在這一點上，我不能同意你的意見。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">649.</div> <div class="english">You've got the point.</div> </div> <div class="chinese">你抓住了問題的實質。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">650.</div> <div class="english">That's the point.</div> </div> <div class="chinese">這正是問題的關鍵。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">651.</div> <div class="english">The whole class is in a heated discussion.</div> </div> <div class="chinese">全班同學正在熱烈討論。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">652.</div> <div class="english">Let's just run through the arguments for and against.</div> </div> <div class="chinese">我們來看一下贊成和反對的理由。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">653.</div> <div class="english">Please sum up what you said just now.</div> </div> <div class="chinese">請把你剛才說的總結一下。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">654.</div> <div class="english">Has anybody else anything to say on this?</div> </div> <div class="chinese">關於這點，誰還有什麼別的要說嗎？ </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">655.</div> <div class="english">Does anybody share David's opinion?</div> </div> <div class="chinese">有誰同意大衛的觀點嗎？ </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">656.</div> <div class="english">Is there any evidence to support what you have said?</div> </div> <div class="chinese">有什麼證據可以支持你的說法嗎？ </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">657.</div> <div class="english">Well, it depends.</div> </div> <div class="chinese">這得視情況而定。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">658.</div> <div class="english">I'm not quite sure.</div> </div> <div class="chinese">我不十分確定。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">659.</div> <div class="english">I'm of the same opinion.</div> </div> <div class="chinese">我有同樣的看法。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">660.</div> <div class="english">That's exactly what I think.</div> </div> <div class="chinese">那正是我所想的。</div> </div>
+
+<div class="chapter-title">伍五、About Things In The Future 考慮將來可能從事的活動</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">661.</div> <div class="english">What are you going to do after graduation?</div> </div> <div class="chinese">畢業後你打算做什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">662.</div> <div class="english">I'm going to find a job.</div> </div> <div class="chinese">我打算找一份工作。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">663.</div> <div class="english">I'll go abroad for further study.</div> </div> <div class="chinese">我會出國深造。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">664.</div> <div class="english">I want to be a teacher.</div> </div> <div class="chinese">我想當一名教師。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">665.</div> <div class="english">Have you made up your mind yet?</div> </div> <div class="chinese">你決定好了嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">666.</div> <div class="english">Not yet. It's difficult to decide.</div> </div> <div class="chinese">還沒有。很難決定。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">667.</div> <div class="english">I'll think it over.</div> </div> <div class="chinese">我會仔細考慮的。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">668.</div> <div class="english">What's your plan for the summer vacation?</div> </div> <div class="chinese">你暑假有什麼計劃？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">669.</div> <div class="english">I'll go to Beijing with my parents.</div> </div> <div class="chinese">我會和父母一起去北京。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">670.</div> <div class="english">How long will you stay there?</div> </div> <div class="chinese">你會在那兒待多久？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">671.</div> <div class="english">For about two weeks.</div> </div> <div class="chinese">大約兩週。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">672.</div> <div class="english">I hope you have a good time.</div> </div> <div class="chinese">祝你玩得開心。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">673.</div> <div class="english">Thank you.</div> </div> <div class="chinese">謝謝。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">674.</div> <div class="english">What will you be in ten years?</div> </div> <div class="chinese">十年後你會是什麼樣？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">675.</div> <div class="english">Who knows?</div> </div> <div class="chinese">誰知道呢？</div> </div>
+
+<div class="chapter-title">伍六、Talking About Past Events 談論過去的事</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">676.</div> <div class="english">I saw him in the street yesterday.</div> </div> <div class="chinese">我昨天在街上見到他了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">677.</div> <div class="english">He was riding a bicycle.</div> </div> <div class="chinese">他當時正在騎自行車。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">678.</div> <div class="english">If I had got enough money yesterday, I would have bought that tape.</div> </div> <div class="chinese">如果我昨天錢夠的話，我就買了那盒磁帶了。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">679.</div> <div class="english">Looking back on it, I think I shouldn't have given up the contest so easily.</div> </div> <div class="chinese">回過頭來看，我想我不應該如此輕易的放棄那次比賽。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">680.</div> <div class="english">Had I taken a taxi, I wouldn't have been late.</div> </div> <div class="chinese">如果我打的去的話就不會遲到了。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">681.</div> <div class="english">Even if you take the exam again, you won't pass it.</div> </div> <div class="chinese">就算再考一次你也通不過。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">682.</div> <div class="english">Even if you had given him much more money, he might not have paid off the debt.</div> </div> <div class="chinese">就算你給了他更多的錢，他也還不清債務。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">683.</div> <div class="english">What would you have done if you hadn't gone out for a picnic yesterday?</div> </div> <div class="chinese">如果你昨天沒有出去野餐的話。你會幹什麼？ </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">684.</div> <div class="english">I wish I had told him the truth.</div> </div> <div class="chinese">我真希望我把真相告訴了他。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">685.</div> <div class="english">I wish you hadn't cheated me.</div> </div> <div class="chinese">我希望你沒有欺騙我。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">686.</div> <div class="english">If it had been fine, we would have gone to the park.</div> </div> <div class="chinese">如果天氣好的話，我們就去公園了。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">687.</div> <div class="english">Would he have seen you if you hadn't waved to him?</div> </div> <div class="chinese">如果你沒有朝他揮手，他能看見你嗎？ </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">688.</div> <div class="english">I had expected you to come.</div> </div> <div class="chinese">我原以為你會來。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">689.</div> <div class="english">If it hadn't rained, we would have had a game.</div> </div> <div class="chinese">如果天不下雨，我們就進行比賽了。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">690.</div> <div class="english">I'm sorry I missed the meeting.</div> </div> <div class="chinese">很抱歉我錯過了會議。 </div> </div>
+
+<div class="chapter-title">伍七、Talking About Likes And Dislikes 詢問喜歡和不喜歡的事</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">691.</div> <div class="english">What's your favorite food?</div> </div> <div class="chinese">你最喜歡的食物是什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">692.</div> <div class="english">I like Chinese food best.</div> </div> <div class="chinese">我最喜歡中國菜。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">693.</div> <div class="english">Do you like fruit?</div> </div> <div class="chinese">你喜歡水果嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">694.</div> <div class="english">Yes, I like apples and oranges.</div> </div> <div class="chinese">是的，我喜歡蘋果和橘子。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">695.</div> <div class="english">Do you like coffee or tea?</div> </div> <div class="chinese">你喜歡咖啡還是茶？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">696.</div> <div class="english">I prefer tea.</div> </div> <div class="chinese">我更喜歡茶。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">697.</div> <div class="english">What kind of music do you like?</div> </div> <div class="chinese">你喜歡什麼樣的音樂？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">698.</div> <div class="english">I like pop music.</div> </div> <div class="chinese">我喜歡流行音樂。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">699.</div> <div class="english">I don't like rock music at all.</div> </div> <div class="chinese">我一點也不喜歡搖滾樂。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">700.</div> <div class="english">I hate waiting for a long time.</div> </div> <div class="chinese">我討厭等很久。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">701.</div> <div class="english">Do you like watching movies?</div> </div> <div class="chinese">你喜歡看電影嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">702.</div> <div class="english">Yes, I'm interested in science fiction.</div> </div> <div class="chinese">是的，我對科幻片感興趣。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">703.</div> <div class="english">What are your hobbies?</div> </div> <div class="chinese">你有什麼愛好？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">704.</div> <div class="english">I like reading and traveling.</div> </div> <div class="chinese">我喜歡閱讀和旅遊。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">705.</div> <div class="english">That sounds great.</div> </div> <div class="chinese">那聽起來很棒。</div> </div>
+
+<div class="chapter-title">伍八、Giving Advice 給建議</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">706.</div> <div class="english">You should work harder.</div> </div> <div class="chinese">你應該更努力工作。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">707.</div> <div class="english">Why don't you have a rest?</div> </div> <div class="chinese">你為什麼不休息一下呢？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">708.</div> <div class="english">If I were you, I would take the offer.</div> </div> <div class="chinese">如果我是你，我會接受這個提議。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">709.</div> <div class="english">You'd better see a doctor.</div> </div> <div class="chinese">你最好去看醫生。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">710.</div> <div class="english">You ought to be more careful.</div> </div> <div class="chinese">你應該更小心一點。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">711.</div> <div class="english">How about going for a walk?</div> </div> <div class="chinese">出去散步怎麼樣？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">712.</div> <div class="english">Would you mind not spitting everywhere?</div> </div> <div class="chinese">不要隨地吐痰行嗎？ </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">713.</div> <div class="english">It's only a suggestion, you don't have to take it.</div> </div> <div class="chinese">這只是一個建議，你可以不聽。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">714.</div> <div class="english">If you really want my advice I don't think you should quit school.</div> </div> <div class="chinese">如果你真想聽我的意見，我想你不應該退學。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">715.</div> <div class="english">Thanks for your advice but I have to consider it myself.</div> </div> <div class="chinese">謝謝你的建議，但我得自己想想。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">716.</div> <div class="english">He does not pay attention to anybody. You are wasting your time in persuading him.</div> </div> <div class="chinese">他誰的話也不聽，你勸他是在浪費時間。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">717.</div> <div class="english">I am old enough to make up my own mind.</div> </div> <div class="chinese">我已經長大了，可以自己拿主意了。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">718.</div> <div class="english">Your work seems not satisfactory.</div> </div> <div class="chinese">你的工作看起來並不令人滿意。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">719.</div> <div class="english">What about your opinion?</div> </div> <div class="chinese">你怎麼想？ </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">720.</div> <div class="english">I generally agree with you.</div> </div> <div class="chinese">我大體上同意你的看法。 </div> </div>
+
+<div class="chapter-title">伍九、Asking For Help 請別人幫忙</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">721.</div> <div class="english">Would you open the door for me, please?</div> </div> <div class="chinese">你能替我開門嗎？ </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">722.</div> <div class="english">With pleasure.</div> </div> <div class="chinese">樂意幫忙。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">723.</div> <div class="english">Would you mind opening the window?</div> </div> <div class="chinese">你介意開窗嗎？ </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">724.</div> <div class="english">Not at all.</div> </div> <div class="chinese">一點兒也不。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">725.</div> <div class="english">I wondered if you could buy me some pencils?</div> </div> <div class="chinese">我不知道你是否能幫我買些鉛筆？ </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">726.</div> <div class="english">Could you do me a favor?</div> </div> <div class="chinese">能幫我個忙嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">727.</div> <div class="english">What can I do for you?</div> </div> <div class="chinese">我能為你做什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">728.</div> <div class="english">Could you show me the way to the station?</div> </div> <div class="chinese">你能告訴我去車站的路嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">729.</div> <div class="english">Go straight and turn left at the first corner.</div> </div> <div class="chinese">直走，在第一個路口左轉。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">730.</div> <div class="english">Thank you very much.</div> </div> <div class="chinese">非常感謝。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">731.</div> <div class="english">You're welcome.</div> </div> <div class="chinese">不客氣。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">732.</div> <div class="english">Could you help me with this heavy box?</div> </div> <div class="chinese">你能幫我搬一下這個沉重的箱子嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">733.</div> <div class="english">No problem.</div> </div> <div class="chinese">沒問題。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">734.</div> <div class="english">I'm sorry, I'm busy right now.</div> </div> <div class="chinese">對不起，我現在正忙。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">735.</div> <div class="english">That's okay.</div> </div> <div class="chinese">沒關係。</div> </div>
+
+<div class="chapter-title">伍十、About Travel 關於旅遊</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">736.</div> <div class="english">Where are you going for your holiday?</div> </div> <div class="chinese">你打算去哪兒度假？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">737.</div> <div class="english">I'm going to travel around Europe.</div> </div> <div class="chinese">我打算去歐洲旅行。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">738.</div> <div class="english">How are you going there?</div> </div> <div class="chinese">你怎麼去那兒？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">739.</div> <div class="english">I'm going by air.</div> </div> <div class="chinese">我乘飛機去。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">740.</div> <div class="english">Have you got your passport ready?</div> </div> <div class="chinese">你的護照準備好了嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">741.</div> <div class="english">Yes, I have.</div> </div> <div class="chinese">是的，好了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">742.</div> <div class="english">When are you leaving?</div> </div> <div class="chinese">你什麼時候出發？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">743.</div> <div class="english">I'm leaving next Monday.</div> </div> <div class="chinese">我下週一出發。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">744.</div> <div class="english">How long will you stay?</div> </div> <div class="chinese">你會待多久？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">745.</div> <div class="english">For about a month.</div> </div> <div class="chinese">大約一個月。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">746.</div> <div class="english">I wish you a pleasant journey.</div> </div> <div class="chinese">祝你旅途愉快。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">747.</div> <div class="english">I bought a ticket for a sleeper.</div> </div> <div class="chinese">我買了張臥舖票。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">748.</div> <div class="english">Have you reserved your ticket?</div> </div> <div class="chinese">你訂票了嗎？ </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">749.</div> <div class="english">I would never have thought of it if you hadn't mentioned it.</div> </div> <div class="chinese">如果不是你提起的話，我肯定想不到。 </div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">750.</div> <div class="english">I will see you off at the railway station.</div> </div> <div class="chinese">我會去車站送你。 </div> </div>
+
+</div>
+
+
+<div id="page6" class="page"> 
+<h2>第陸冊</h2>
+<div class="chapter-title">陸一、Shopping 購物</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">751.</div> <div class="english">Can I help you? / What can I do for you?</div> </div> <div class="chinese">我能幫您嗎？ / 您想買點什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">752.</div> <div class="english">I want a pair of shoes.</div> </div> <div class="chinese">我想買雙鞋。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">753.</div> <div class="english">What color do you want?</div> </div> <div class="chinese">您想要什麼顏色的？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">754.</div> <div class="english">I want a black one.</div> </div> <div class="chinese">我想要黑色的。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">755.</div> <div class="english">What size do you wear?</div> </div> <div class="chinese">您穿多大號的？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">756.</div> <div class="english">Size seven.</div> </div> <div class="chinese">7 號。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">757.</div> <div class="english">Try on this pair, please.</div> </div> <div class="chinese">請試試這一雙。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">758.</div> <div class="english">They are just my size.</div> </div> <div class="chinese">大小正合適。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">759.</div> <div class="english">How much are they?</div> </div> <div class="chinese">多少錢？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">760.</div> <div class="english">Twenty dollars.</div> </div> <div class="chinese">20 美元。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">761.</div> <div class="english">That's too expensive.</div> </div> <div class="chinese">太貴了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">762.</div> <div class="english">Have you any cheaper ones?</div> </div> <div class="chinese">有便宜點的嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">763.</div> <div class="english">What about this pair?</div> </div> <div class="chinese">這一雙怎麼樣？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">764.</div> <div class="english">I'll take them.</div> </div> <div class="chinese">我要了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">765.</div> <div class="english">Where do I pay?</div> </div> <div class="chinese">在哪兒交錢？</div> </div>
+
+<div class="chapter-title">陸二、In A Restaurant 在餐館</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">766.</div> <div class="english">Have you a table for two?</div> </div> <div class="chinese">有兩個人的位子嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">767.</div> <div class="english">This way, please.</div> </div> <div class="chinese">請這邊走。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">768.</div> <div class="english">May I see the menu, please?</div> </div> <div class="chinese">我可以看菜單嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">769.</div> <div class="english">What would you like to eat?</div> </div> <div class="chinese">您想吃點什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">770.</div> <div class="english">What's the specialty of the house?</div> </div> <div class="chinese">這裡的招牌菜是什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">771.</div> <div class="english">I'll have a beefsteak.</div> </div> <div class="chinese">我要一份牛排。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">772.</div> <div class="english">How would you like your steak?</div> </div> <div class="chinese">您的牛排要幾分熟？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">773.</div> <div class="english">Medium, please.</div> </div> <div class="chinese">五分熟。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">774.</div> <div class="english">Would you like something to drink?</div> </div> <div class="chinese">您想喝點什麼嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">775.</div> <div class="english">A cup of coffee, please.</div> </div> <div class="chinese">請給我一杯咖啡。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">776.</div> <div class="english">Anything else?</div> </div> <div class="chinese">還要別的嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">777.</div> <div class="english">No, that's all.</div> </div> <div class="chinese">不，就這些。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">778.</div> <div class="english">Enjoy your meal.</div> </div> <div class="chinese">請慢用。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">779.</div> <div class="english">Can I have the bill, please?</div> </div> <div class="chinese">請給我帳單。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">780.</div> <div class="english">Keep the change, please.</div> </div> <div class="chinese">不用找零了。</div> </div>
+
+<div class="chapter-title">陸三、At The Post Office 在郵局</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">781.</div> <div class="english">Where is the nearest post office?</div> </div> <div class="chinese">最近的郵局在哪兒？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">782.</div> <div class="english">I want to send this letter to New York.</div> </div> <div class="chinese">我想把這封信寄往紐約。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">783.</div> <div class="english">How much is the postage?</div> </div> <div class="chinese">郵資是多少？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">784.</div> <div class="english">I want to send it by airmail.</div> </div> <div class="chinese">我想寄航空信。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">785.</div> <div class="english">You need to put more stamps on it.</div> </div> <div class="chinese">你還得再多貼點郵票。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">786.</div> <div class="english">Where can I buy stamps?</div> </div> <div class="chinese">哪兒能買到郵票？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">787.</div> <div class="english">At that counter.</div> </div> <div class="chinese">在那個櫃檯。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">788.</div> <div class="english">I want to send this parcel.</div> </div> <div class="chinese">我想寄這個包裹。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">789.</div> <div class="english">What's in it?</div> </div> <div class="chinese">裡面是什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">790.</div> <div class="english">Some books.</div> </div> <div class="chinese">一些書。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">791.</div> <div class="english">Please weigh it.</div> </div> <div class="chinese">請稱一下。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">792.</div> <div class="english">It's two kilos.</div> </div> <div class="chinese">兩公斤重。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">793.</div> <div class="english">Does it contain any fragile items?</div> </div> <div class="chinese">裡面有易碎物品嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">794.</div> <div class="english">No, nothing.</div> </div> <div class="chinese">不，沒有。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">795.</div> <div class="english">When will it arrive?</div> </div> <div class="chinese">什麼時候能到？</div> </div>
+
+<div class="chapter-title">陸四、At The Bank 在銀行</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">796.</div> <div class="english">I'd like to open an account.</div> </div> <div class="chinese">我想開個帳戶。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">797.</div> <div class="english">What kind of account?</div> </div> <div class="chinese">什麼樣的帳戶？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">798.</div> <div class="english">A savings account.</div> </div> <div class="chinese">儲蓄帳戶。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">799.</div> <div class="english">Please fill in this form.</div> </div> <div class="chinese">請填這張表。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">800.</div> <div class="english">I'd like to deposit some money.</div> </div> <div class="chinese">我想存點錢。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">801.</div> <div class="english">How much do you want to deposit?</div> </div> <div class="chinese">您想存多少？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">802.</div> <div class="english">Five hundred dollars.</div> </div> <div class="chinese">500 美元。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">803.</div> <div class="english">I'd like to withdraw some money.</div> </div> <div class="chinese">我想取點錢。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">804.</div> <div class="english">Please write your name and account number.</div> </div> <div class="chinese">請寫下您的姓名和帳號。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">805.</div> <div class="english">Can I cash a traveler's check here?</div> </div> <div class="chinese">我能在這兒兌換旅行支票嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">806.</div> <div class="english">Yes, but we need to see your passport.</div> </div> <div class="chinese">可以，但我們要看您的護照。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">807.</div> <div class="english">What's the exchange rate?</div> </div> <div class="chinese">匯率是多少？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">808.</div> <div class="english">Where can I change my money?</div> </div> <div class="chinese">在哪兒可以換錢？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">809.</div> <div class="english">At Window No. 3.</div> </div> <div class="chinese">在 3 號窗口。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">810.</div> <div class="english">Please give me some small change.</div> </div> <div class="chinese">請給我一些零錢。</div> </div>
+
+<div class="chapter-title">陸五、Talking About Health 談論健康</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">811.</div> <div class="english">I don't feel well today.</div> </div> <div class="chinese">我今天感覺不舒服。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">812.</div> <div class="english">What's wrong with you?</div> </div> <div class="chinese">你怎麼了？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">813.</div> <div class="english">I have a headache.</div> </div> <div class="chinese">我頭痛。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">814.</div> <div class="english">Do you have a fever?</div> </div> <div class="chinese">你發燒嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">815.</div> <div class="english">I don't think so.</div> </div> <div class="chinese">我想沒有。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">816.</div> <div class="english">You'd better go to see a doctor.</div> </div> <div class="chinese">你最好去看醫生。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">817.</div> <div class="english">I've got a bad cold.</div> </div> <div class="chinese">我得了重感冒。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">818.</div> <div class="english">My throat is sore.</div> </div> <div class="chinese">我的嗓子疼。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">819.</div> <div class="english">I have no appetite.</div> </div> <div class="chinese">我沒胃口。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">820.</div> <div class="english">I can't sleep well.</div> </div> <div class="chinese">我睡眠不好。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">821.</div> <div class="english">You should take a rest.</div> </div> <div class="chinese">你應該休息一下。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">822.</div> <div class="english">I hope you'll be well soon.</div> </div> <div class="chinese">祝你早日康復。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">823.</div> <div class="english">I'm much better now.</div> </div> <div class="chinese">我現在好多了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">824.</div> <div class="english">You look very pale.</div> </div> <div class="chinese">你看起來臉色很蒼白。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">825.</div> <div class="english">I'm feeling a bit dizzy.</div> </div> <div class="chinese">我感覺有點暈。</div> </div>
+
+<div class="chapter-title">陸六、At The Doctor's 看醫生</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">826.</div> <div class="english">Sit down, please. Let me examine you.</div> </div> <div class="chinese">請坐。讓我給你檢查一下。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">827.</div> <div class="english">Open your mouth and say "Ah".</div> </div> <div class="chinese">張開嘴，說「啊」。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">828.</div> <div class="english">How long have you been like this?</div> </div> <div class="chinese">你這樣有多久了？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">829.</div> <div class="english">Since last night.</div> </div> <div class="chinese">從昨天晚上開始。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">830.</div> <div class="english">It's nothing serious.</div> </div> <div class="chinese">不嚴重。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">831.</div> <div class="english">I'll give you some medicine.</div> </div> <div class="chinese">我給你開點藥。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">832.</div> <div class="english">Take it three times a day.</div> </div> <div class="chinese">一天吃三次。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">833.</div> <div class="english">Drink more water.</div> </div> <div class="chinese">多喝點水。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">834.</div> <div class="english">You'll be all right in a few days.</div> </div> <div class="chinese">幾天後你就會好的。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">835.</div> <div class="english">Do I need an injection?</div> </div> <div class="chinese">我需要打針嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">836.</div> <div class="english">No, it's not necessary.</div> </div> <div class="chinese">不，沒必要。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">837.</div> <div class="english">I want to have my teeth checked.</div> </div> <div class="chinese">我想檢查一下牙齒。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">838.</div> <div class="english">One of my teeth is loose.</div> </div> <div class="chinese">我的一顆牙鬆了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">839.</div> <div class="english">It must be pulled out.</div> </div> <div class="chinese">這顆牙必須拔掉。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">840.</div> <div class="english">Does it hurt?</div> </div> <div class="chinese">疼嗎？</div> </div>
+
+<div class="chapter-title">陸七、Making Telephone Calls 打電話</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">841.</div> <div class="english">Hello! May I speak to Mr. White?</div> </div> <div class="chinese">餵！我可以和懷特先生說話嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">842.</div> <div class="english">Yes, speaking. / This is Mr. White speaking.</div> </div> <div class="chinese">是的，我就是。 / 我是懷特。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">843.</div> <div class="english">Who's calling, please?</div> </div> <div class="chinese">請教是哪位？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">844.</div> <div class="english">This is John.</div> </div> <div class="chinese">我是約翰。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">845.</div> <div class="english">Hold on a moment, please.</div> </div> <div class="chinese">請稍等。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">846.</div> <div class="english">He's not in right now.</div> </div> <div class="chinese">他現在不在。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">847.</div> <div class="english">Would you like to leave a message?</div> </div> <div class="chinese">您要留個話嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">848.</div> <div class="english">Please tell him to call me back.</div> </div> <div class="chinese">請告訴他給我回個電話。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">849.</div> <div class="english">My number is 1234567.</div> </div> <div class="chinese">我的電話號碼是 1234567。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">850.</div> <div class="english">The line is busy.</div> </div> <div class="chinese">電話佔線。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">851.</div> <div class="english">I'll call again later.</div> </div> <div class="chinese">我過會兒再打。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">852.</div> <div class="english">You've got the wrong number.</div> </div> <div class="chinese">你打錯電話了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">853.</div> <div class="english">I can't hear you clearly.</div> </div> <div class="chinese">我聽不清楚。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">854.</div> <div class="english">Could you speak louder, please?</div> </div> <div class="chinese">你能大點聲說嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">855.</div> <div class="english">Sorry, I have to hang up now.</div> </div> <div class="chinese">對不起，我現在得掛電話了。</div> </div>
+
+<div class="chapter-title">陸八、About Mail 關於郵件</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">856.</div> <div class="english">Is there any mail for me?</div> </div> <div class="chinese">有我的信嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">857.</div> <div class="english">Yes, here's a letter for you.</div> </div> <div class="chinese">有，這兒有一封你的信。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">858.</div> <div class="english">Who's it from?</div> </div> <div class="chinese">誰寄來的？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">859.</div> <div class="english">It's from your brother.</div> </div> <div class="chinese">你哥哥寄來的。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">860.</div> <div class="english">I'm expecting a parcel from home.</div> </div> <div class="chinese">我在等家裡寄來的一個包裹。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">861.</div> <div class="english">Has the mail come yet?</div> </div> <div class="chinese">郵件到了嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">862.</div> <div class="english">The mail is delivered twice a day.</div> </div> <div class="chinese">郵件每天投遞兩次。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">863.</div> <div class="english">I haven't heard from him for a long time.</div> </div> <div class="chinese">我很久沒收到他的信了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">864.</div> <div class="english">I must write a letter to my mother.</div> </div> <div class="chinese">我必須給我母親寫封信。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">865.</div> <div class="english">Don't forget to put a stamp on it.</div> </div> <div class="chinese">別忘了貼郵票。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">866.</div> <div class="english">Where is the mailbox?</div> </div> <div class="chinese">信箱在哪兒？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">867.</div> <div class="english">It's at the corner of the street.</div> </div> <div class="chinese">在街道轉角處。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">868.</div> <div class="english">I'll mail this letter for you.</div> </div> <div class="chinese">我替你寄這封信。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">869.</div> <div class="english">Thank you for your help.</div> </div> <div class="chinese">謝謝你的幫助。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">870.</div> <div class="english">You're welcome.</div> </div> <div class="chinese">不客氣。</div> </div>
+
+<div class="chapter-title">陸九、About Radio and TV 關於收音機和電視</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">871.</div> <div class="english">What's on TV tonight?</div> </div> <div class="chinese">今晚電視播什麼？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">872.</div> <div class="english">There is a good film on Channel 4.</div> </div> <div class="chinese">4 頻道有一部好電影。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">873.</div> <div class="english">When does it start?</div> </div> <div class="chinese">什麼時候開始？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">874.</div> <div class="english">At eight o'clock.</div> </div> <div class="chinese">8 點鐘。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">875.</div> <div class="english">Turn on the TV, please.</div> </div> <div class="chinese">請打開電視。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">876.</div> <div class="english">Turn up the radio, please.</div> </div> <div class="chinese">請把收音機開響點。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">877.</div> <div class="english">We can't get good pictures on our TV set.</div> </div> <div class="chinese">我們的電視機圖像不清楚。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">878.</div> <div class="english">Can this radio receive short-wave?</div> </div> <div class="chinese">這部收音機能收短波嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">879.</div> <div class="english">If you install an outside antenna, you will have better reception.</div> </div> <div class="chinese">如果你安裝室外天線，接收效果會好些。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">880.</div> <div class="english">Turn down the radio, please.</div> </div> <div class="chinese">請把收音機關小聲點。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">881.</div> <div class="english">We'll have a soap opera series on TV this week.</div> </div> <div class="chinese">這週電視上會播出一系列肥皂劇。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">882.</div> <div class="english">Please tune in next time.</div> </div> <div class="chinese">請下次繼續收聽。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">883.</div> <div class="english">We're broadcasting from London.</div> </div> <div class="chinese">我們從倫敦進行廣播。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">884.</div> <div class="english">You can receive our program at short wave 37.5 MH.</div> </div> <div class="chinese">您可以在短波 37.5 兆赫收到我們的節目。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">885.</div> <div class="english">There's too much static.</div> </div> <div class="chinese">干擾太大。</div> </div>
+
+<div class="chapter-title">陸十、About Music and Literature 關於音樂和文學</div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">886.</div> <div class="english">What's your favorite music?</div> </div> <div class="chinese">你最喜歡什麼音樂？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">887.</div> <div class="english">Do you often go to a concert?</div> </div> <div class="chinese">你經常去聽音樂會嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">888.</div> <div class="english">I hate jazz. It's too noisy.</div> </div> <div class="chinese">我討厭爵士樂，太吵了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">889.</div> <div class="english">Do you like pop music?</div> </div> <div class="chinese">你喜歡流行音樂嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">890.</div> <div class="english">I have never heard the piece before, who wrote it?</div> </div> <div class="chinese">我以前沒聽過這支曲子，誰寫的？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">891.</div> <div class="english">What do you think of this novel?</div> </div> <div class="chinese">你覺得這部小說怎麼樣？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">892.</div> <div class="english">It's very interesting.</div> </div> <div class="chinese">很有趣。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">893.</div> <div class="english">Who is the author?</div> </div> <div class="chinese">作者是誰？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">894.</div> <div class="english">I can't remember his name.</div> </div> <div class="chinese">我不記得他的名字了。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">895.</div> <div class="english">Have you read "Hamlet"?</div> </div> <div class="chinese">你讀過《哈姆雷特》嗎？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">896.</div> <div class="english">Yes, it's a famous tragedy.</div> </div> <div class="chinese">讀過，它是著名的悲劇。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">897.</div> <div class="english">Who wrote it?</div> </div> <div class="chinese">誰寫的？</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">898.</div> <div class="english">Shakespeare.</div> </div> <div class="chinese">莎士比亞。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">899.</div> <div class="english">I like reading poems.</div> </div> <div class="chinese">我喜歡讀詩。</div> </div>
+
+<div class="sentence-box" onclick="speak(this)"> <div class="eng-row"> <div class="num">900.</div> <div class="english">So do I.</div> </div> <div class="chinese">我也是。</div> </div>
+
+</div>
+
+
+    <script>
+        function showPage(num) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById('page' + num);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo(0,0);
+            } else {
+                alert('第 ' + num + ' 冊內容尚未載入');
+            }
+        }
+
+        function speak(element) {
+            const text = element.querySelector('.english').innerText;
+            const msg = new SpeechSynthesisUtterance(text);
+            msg.lang = 'en-US';
+            msg.rate = parseFloat(document.getElementById('rate').value) || 0.8;
+            window.speechSynthesis.cancel();
+            window.speechSynthesis.speak(msg);
+        }
+
+        function toggle(className, btnId) {
+            const elements = document.querySelectorAll('.' + className);
+            const btn = document.getElementById(btnId);
+            const isHidden = elements.length > 0 && elements[0].classList.contains('hidden');
+
+            elements.forEach(el => {
+                if (isHidden) el.classList.remove('hidden');
+                else el.classList.add('hidden');
+            });
+
+            if (isHidden) {
+                btn.className = 'toggle-btn btn-on';
+            } else {
+                btn.className = 'toggle-btn btn-off';
+            }
+        }
+
+        showPage(1); // 預設開啟第一冊
+    </script>
+</body>
+</html>
