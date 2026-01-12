@@ -64,7 +64,19 @@
             .page { padding: 15px; }
         }
     </style>
+		<!-- PWA -->
+	<link rel="manifest" href="manifest.json">
+	<meta name="theme-color" content="#007bff">
+
+	<!-- iOS PWA 支援 -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<meta name="apple-mobile-web-app-title" content="English900">
+
+	<link rel="apple-touch-icon" href="icon-192.png">
+
 </head>
+
 <body>
     
     <div class="menu">
@@ -3285,6 +3297,10 @@
 
         // 初始化顯示第一頁
         showPage(1);
+		
+	if ("serviceWorker" in navigator) {
+	navigator.serviceWorker.register("service-worker.js");
+	}
     </script>
 </body>
 </html>
